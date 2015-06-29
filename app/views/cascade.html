@@ -1,0 +1,25 @@
+<div class="slide cascade">
+  <div class="container-fluid center-item">
+    <div class="row">
+      <div class="col-sm-3 col-sm-offset-3 right">
+        <h5>July 23rd, 2015</h5>
+        <h1>Cascade.</h1>
+        <p>A last-minute party celebrating the forests of the northern cascades. A selection of cocktails and light hors d' ouvres. By invitation only.</p>
+        <div ng-hide="users.badInvite">
+          <a ng-show="users.inviter && users.inviter.invites > 0 && !users.invitee && !users.requester" ng-click="users.rsvp()" class="btn btn-lg btn-primary" href="">RSVP</a>
+          <a ng-hide="users.inviter && users.inviter.invites > 0 || users.invitee || users.requester" ng-click="users.regInvite()" class="btn btn-lg btn-primary" href="">Request an Invitation</a>
+        </div>
+        <div ng-show="users.badInvite">
+          <p>Uh oh. This invite URL has expired. You can still <a href="" ng-click="users.regInvite()">request an invite</a>, and we'll let you know if space opens up.</p>
+        </div>
+
+        <div ng-show="users.invitee">
+          <p>Thanks for registering. You may invite up to {{ invitee.invites }} guests. To invite them, simply send them the link below:</p>
+          <a href="{{ users.inviteUrl }}">{{ users.inviteUrl }}</a>
+        </div>
+      </div>
+      <div class="col-sm-3 left">
+        <h3>A pine-scented cocktail party to celebrate summer in the northwoods. Enjoy cocktails inspired by Idaho and Washington's Cascade mountains, and meet explorers and adventurers from around the world.</h3>
+    </div>
+  </div>
+</div>

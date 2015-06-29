@@ -1,0 +1,19 @@
+<div class="slide home">
+  <div class="container-fluid center-item">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2 center">
+        <h1 ng-show="users.requester">Hi {{ users.requester.first_name }}, thanks for requesting an invite. We'll let you know if we can accomadate.</h1>
+        <div ng-show="users.invitee">
+          <h1>Hi {{ users.invitee.first_name }}, thanks for RSVP'ing!</h1>
+          <h3>We'll send an email the week of the event with details on the location.</h3>
+          <h3>In the meantime, you can invite {{ users.invitee.invites }} more people. They'll need the link below to RSVP. Invite people who you think are interesting and willing to share stories.</h3>
+          <h2 class="highlight">{{ users.inviteUrl }}</h2>
+          <h4>MAKE SURE TO COPY THIS URL SOMEWHERE SAFE. IT'S THE ONLY TIME YOU'LL SEE IT.</h4>
+        </div>
+        <div ng-hide="users.requester || users.invitee">
+          <h1>Uh oh. This page has expired.</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
