@@ -12,10 +12,8 @@ angular.module('freeRadicalsApp')
 
     var $scope = {};
 
-    var ref = new Firebase("https://free-radical.firebaseio.com/cascade");
+    var ref = new Firebase("https://free-radical.firebaseio.com/cascade/");
     // create an instance of the authentication service
-
-    $scope.inviter = $routeParams.inv ? $firebaseObject(ref.child("rsvps").child(Number($routeParams.inv))) : null;
 
     var auth = $firebaseAuth(ref);
     // login with Facebook
@@ -26,6 +24,10 @@ angular.module('freeRadicalsApp')
     if ($scope.inviter && $scope.inviter.invites == 0) {
       $scope.badInvite = true;
     };
+
+    $scope.checkInviter = function (n) {
+      $scope.inviter = $firebaseObject(ref.child("rsvps").child(n));
+    }
 
     $scope.rsvp = function () {
       auth.$authWithOAuthPopup("facebook", { scope: 'email', remember: "sessionOnly" }).then(function(authData) {

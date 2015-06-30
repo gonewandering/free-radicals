@@ -5,8 +5,9 @@
         <h5>July 23rd, 2015</h5>
         <h1>Cascade.</h1>
         <p>A last-minute party celebrating the forests of the northern cascades. A selection of cocktails and light hors d' ouvres. By invitation only.</p>
+        <p>You were invited by {{ users.inviter.first_name }}</p>
         <div ng-hide="users.badInvite">
-          <a ng-show="users.inviter && users.inviter.invites > 0 && !users.invitee && !users.requester" ng-click="users.rsvp()" class="btn btn-lg btn-primary" href="">RSVP</a>
+          <a ng-show="users.inviter && users.inviter.invites > 0" ng-click="users.rsvp()" class="btn btn-lg btn-primary" href="">RSVP</a>
           <a ng-hide="users.inviter && users.inviter.invites > 0 || users.invitee || users.requester" ng-click="users.regInvite()" class="btn btn-lg btn-primary" href="">Request an Invitation</a>
         </div>
         <div ng-show="users.badInvite">
@@ -19,7 +20,7 @@
         </div>
       </div>
       <div class="col-sm-3 left">
-        <h3>A pine-scented cocktail party to celebrate summer in the northwoods. Enjoy cocktails inspired by Idaho and Washington's Cascade mountains, and meet explorers and adventurers from around the world.</h3>
+        <h3>A pine-scented cocktail party to celebrate summer in the northwoods. Enjoy cocktails inspired b.</h3>
     </div>
   </div>
 </div>
