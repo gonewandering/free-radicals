@@ -14,7 +14,7 @@ angular.module('freeRadicalsApp')
     $scope.inviter = $routeParams.inv;
 
     $scope.$watch('inviter', function (o,n) {
-      if (n.length > 5) {
+      if (n && n.length > 5) {
         $scope.users.checkInviter(n);
       }
     })

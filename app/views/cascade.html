@@ -1,26 +1,28 @@
 <div class="slide cascade">
   <div class="container-fluid center-item">
     <div class="row">
-      <div class="col-sm-3 col-sm-offset-3 right">
-        <h5>July 23rd, 2015</h5>
+      <div class="col-sm-3 col-sm-offset-3 right left-xs">
         <h1>Cascade.</h1>
-        <p>A last-minute party celebrating the forests of the northern cascades. A selection of cocktails and light hors d' ouvres. By invitation only.</p>
-        <p>You were invited by {{ users.inviter.first_name }}</p>
+        <h4>July 24th, 2015, 9pm</h4>
+          <div class="visible-xs">
+            <h3>Come join us July 24th for drinks and dancing under the stars in Brooklyn.</h3>
+            <h3>Cocktails created by New York's <a href="http://newyork.seriouseats.com/2010/04/my-favorite-bar-ward-iii-in-tribeca-3-manhattan-review.html">Ward III</a> with help from Idaho artist <a href="http://www.betsyhinze.com/#!experience/cdku">Betsy Hinze</a>.</h3>
+          </div>
+          <h4>
+            Open bar. By invitation only. Location provided to confirmed guests.
+          </h4>
         <div ng-hide="users.badInvite">
-          <a ng-show="users.inviter && users.inviter.invites > 0" ng-click="users.rsvp()" class="btn btn-lg btn-primary" href="">RSVP</a>
-          <a ng-hide="users.inviter && users.inviter.invites > 0 || users.invitee || users.requester" ng-click="users.regInvite()" class="btn btn-lg btn-primary" href="">Request an Invitation</a>
+          <p><em>You were invited by {{ users.inviter.first_name }} {{ users.inviter.last_name }}</em></p>
+          <a ng-show="!users.loading && users.inviter && users.inviter.invites > 0" ng-click="users.rsvp()" class="btn btn-lg btn-primary" href=""><i class="fa fa-facebook"></i> RSVP</a>
         </div>
         <div ng-show="users.badInvite">
-          <p>Uh oh. This invite URL has expired. You can still <a href="" ng-click="users.regInvite()">request an invite</a>, and we'll let you know if space opens up.</p>
-        </div>
-
-        <div ng-show="users.invitee">
-          <p>Thanks for registering. You may invite up to {{ invitee.invites }} guests. To invite them, simply send them the link below:</p>
-          <a href="{{ users.inviteUrl }}">{{ users.inviteUrl }}</a>
+          <p>Uh oh. That invitation url has expired. You can ask whoever invited you to contact us if you think there's an error.</p>
         </div>
       </div>
-      <div class="col-sm-3 left">
-        <h3>A pine-scented cocktail party to celebrate summer in the northwoods. Enjoy cocktails inspired b.</h3>
+      <div class="col-sm-3 left hidden-xs">
+        <h3>You're invited.</h3>
+        <h3>Come join us July 24th for drinks and dancing under the stars in Brooklyn.</h3>
+        <h3>Cocktails created by New York's <a href="http://newyork.seriouseats.com/2010/04/my-favorite-bar-ward-iii-in-tribeca-3-manhattan-review.html">Ward III</a> with help from Idaho artist <a href="http://www.betsyhinze.com/#!experience/cdku">Betsy Hinze</a>.</h3>
     </div>
   </div>
 </div>

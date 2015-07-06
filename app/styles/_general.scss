@@ -1,14 +1,13 @@
 // Colors
 $black: black;
 $white: white;
-$highlight: #8b00f6;
+$highlight: #401f44;
 
 $headline-font: "freight-display-pro";
 
 body {
   color: rgba($white, 1);
   background: $highlight;
-  background-image: url('../images/pattern.jpg');
 }
 
 .highlight {
@@ -18,6 +17,10 @@ body {
 
 p {
   font-family: $headline-font;
+}
+
+a {
+  color: lighten($highlight, 40);
 }
 
 h1,
@@ -54,10 +57,16 @@ h1 {
 
 .right {
   text-align: right;
+  @media screen and (max-width: 768px) {
+    text-align: left;
+  }
 }
 
 .center {
   text-align: center;
+  @media screen and (max-width: 768px) {
+    text-align: left;
+  }
 }
 
 .left {
