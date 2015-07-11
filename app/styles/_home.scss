@@ -1,0 +1,28 @@
+.slide.home {
+  background: $black url('../images/subway.jpg') no-repeat center center fixed;
+  background-size: cover;
+
+  .icon {
+    height: 42px;
+    margin-top: -8px;
+  }
+
+  .bottom-item {
+    background: rgba(0, 0, 0, 1);
+    padding: 50px;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    p {
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+  }
+}
