@@ -10,7 +10,7 @@
 angular.module('freeRadicalsApp')
   .service('Users', ['$routeParams', '$firebaseAuth',  '$firebaseObject', '$location', function ($routeParams, $firebaseAuth, $firebaseObject, $location) {
 
-    var $scope = {};
+    var $scope = $scope || {};
 
     $scope.loading = true;
 
@@ -35,51 +35,65 @@ angular.module('freeRadicalsApp')
       });
     }
 
+    $scope.rsvp = function (authData) {
+      var id = (authData.facebook ? authData.facebook.id : authData.id);
+      $scope.inviteUrl = _url + id;
 
-    $scope.rsvp = function () {
-      auth.$authWithOAuthPopup("facebook", { scope: 'email', remember: "sessionOnly" }).then(function(authData) {
+      if (id !== $scope.inviter.id) {
 
-        $scope.inviteUrl = _url + authData.facebook.id;
+        $scope.invitee = $firebaseObject(ref.child('rsvps').child(id));
 
-        if (authData.facebook.id !== $scope.inviter.id) {
-
-          $scope.invitee = $firebaseObject(ref.child('rsvps').child(authData.facebook.id));
+        if (authData.facebook) {
           $scope.invitee = _.extend($scope.invitee, authData.facebook.cachedUserProfile);
-
-          $scope.invitee.invitesInit = $scope.inviter.invitesInit - 1;
-          $scope.invitee.invites = $scope.invitee.invitesInit;
-
-          $scope.invitee.invitedBy = {
-            first_name: $scope.inviter.first_name,
-            last_name: $scope.inviter.last_name,
-            id: $scope.inviter.id
-          };
-
-          $scope.inviter.invites = $scope.inviter.invites - 1;
-
-          $scope.inviter.$save();
-          $scope.invitee.$save();
-
         } else {
-          $scope.invitee = $scope.inviter;
+          $scope.invitee = _.extend($scope.invitee, authData);
         }
 
-        $location.path("confirmation");
+        $scope.invitee.invitesInit = $scope.inviter.invitesInit - 1;
+        $scope.invitee.invites = $scope.invitee.invitesInit;
 
-      }).catch(function(error) {
-        console.log("Authentication failed:", error);
+        $scope.invitee.invitedBy = {
+          first_name: $scope.inviter.first_name,
+          last_name: $scope.inviter.last_name,
+          id: $scope.inviter.id
+        };
+
+        $scope.inviter.invites = $scope.inviter.invites - 1;
+
+        $scope.inviter.$save();
+        $scope.invitee.$save();
+
+      } else {
+        $scope.invitee = $scope.inviter;
+      }
+
+      $location.path("confirmation");
+    }
+
+    $scope.rsvpEmail = function (options) {
+      ref.createUser({
+        email    : options.email,
+        password : options.password
+      }, function(error, userData) {
+        ref.authWithPassword({
+          email    : options.email,
+          password : options.password
+        }, function(error, authData) {
+          $scope.rsvp({
+            email: options.email,
+            first_name: options.first_name,
+            last_name: options.last_name,
+            id: btoa(options.email)
+          })
+        });
       });
-    };
+    }
 
-    $scope.regInvite = function () {
+    $scope.rsvpFacebook = function () {
       auth.$authWithOAuthPopup("facebook", { scope: 'email', remember: "sessionOnly" }).then(function(authData) {
-        $scope.requester = $firebaseObject(ref.child('requesters').child(authData.facebook.id));
-        $scope.requester = _.extend($scope.requester, authData.facebook.cachedUserProfile);
-        $scope.requester.$save();
 
-        $scope.requestedInvite = true;
+        $scope.rsvp(authData);
 
-        $location.path("confirmation");
       }).catch(function(error) {
         console.log("Authentication failed:", error);
       });

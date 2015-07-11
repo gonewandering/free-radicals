@@ -13,7 +13,24 @@
           </h4>
         <div ng-hide="users.badInvite">
           <p><em>You were invited by {{ users.inviter.first_name }} {{ users.inviter.last_name }}</em></p>
-          <a ng-show="!users.loading && users.inviter && users.inviter.invites > 0" ng-click="users.rsvp()" class="btn btn-lg btn-primary" href=""><i class="fa fa-facebook"></i> RSVP</a>
+          <a ng-show="!users.loading && users.inviter && users.inviter.invites > 0" ng-click="users.rsvp()" class="btn btn-lg btn-primary" href=""><i class="fa fa-facebook"></i> Facebook</a>
+                    <a ng-show="!users.loading && users.inviter && users.inviter.invites > 0" ng-click="showRSVPForm = !showRSVPForm" class="btn btn-lg btn-primary" href=""><i class="fa fa-facebook"></i> Email</a>
+          <form ng-submit="users.rsvpEmail(options)">
+            <div ng-show="showRSVPForm">
+              <div class="form-group">
+                <input type="text" class="form-control" ng-model="options.first_name" id="first_name" placeholder="First Name">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" ng-model="options.last_name" id="last_name" placeholder="Last Name">
+              </div>
+              <div class="form-group">
+                <input type="email" class="form-control" ng-model="options.email" name="email" placeholder="Email">
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control" ng-model="options.password" id="password" placeholder="Password">
+              </div>
+              <button type="submit" class="btn btn-info">RSVP</button>
+            </div>
         </div>
         <div ng-show="users.badInvite">
           <p>Uh oh. That invitation url has expired. You can ask whoever invited you to contact us if you think there's an error.</p>
