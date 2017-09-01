@@ -1,2 +1,0 @@
-grunt --force
-aws s3 sync ./dist/ s3://www.freeradicals.nyc/
