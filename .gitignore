@@ -4,6 +4,7 @@
 *.sql
 *.sqlite
 *.sqlite3
+*.pyc
 
 # OS generated files #
 ######################
@@ -13,3 +14,5 @@
 .Spotlight-V100
 .Trashes
 ehthumbs.db
+
+venv
