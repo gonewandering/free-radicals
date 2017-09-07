@@ -19,6 +19,8 @@ router.post('/', (req, res, next) => {
 
   let invite = db.Invite.create(invitee).then(invite => {
     res.json(invite)
+  }).catch(err => {
+    res.json(err)
   })
 });
 

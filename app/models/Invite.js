@@ -4,7 +4,10 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       primaryKey: true
     },
-    email: DataTypes.STRING,
+    email: {
+      type: DataTypes.STRING,
+      unique: true
+    },
     color: DataTypes.STRING,
     gender: DataTypes.STRING,
     confirmed: DataTypes.BOOLEAN,
