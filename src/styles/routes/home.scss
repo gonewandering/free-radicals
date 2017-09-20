@@ -1,14 +1,9 @@
 .home {
-  h1 {
-    font-family: 'Libre Barcode 39 Text', cursive;
-    font-weight: 200;
-    font-size: 64px;
-    margin-bottom: 3px;
+  img {
+    max-width: 300px;
   }
 
-  p {
-    font-family: 'Abel', sans-serif;
-    font-size: 30px;
-    max-width: 500px;
+  h1 {
+    font-size: 3.5em;
   }
 }

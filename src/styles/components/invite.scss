@@ -3,5 +3,8 @@
   overflow: hidden;
   text-overflow: ellipsis;
   padding: 4px 0;
-
+  .btn-inactive {
+    background: #666;
+    color: white;
+  }
 }

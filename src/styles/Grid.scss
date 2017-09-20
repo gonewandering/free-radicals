@@ -1,0 +1,91 @@
+$columns: 3;
+$rows: 2;
+$offsets: 2;
+
+$black: black;
+
+.grid {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  height: 100vh;
+
+  .box {
+    padding: 30px;
+    color: white;
+    background-size: cover;
+    background-position: center center;
+    width: 100vw / $columns;
+    display: flex;
+    align-items: center;
+
+    a {
+      color: white;
+    }
+
+    .center {
+
+    }
+  }
+
+  .box-white {
+    background-color: white;
+    font-family: serif;
+    color: $black;
+    a {
+      color: $black;
+    }
+  }
+
+  .box-black {
+    background-color: black;
+    font-family: serif;
+    color: #eee;
+
+    h1,h2,h3,h4 {
+      color: white;
+    }
+    a {
+      color: white;
+    }
+  }
+}
+
+$r: $rows * $offsets;
+$n: $rows * $columns;
+
+@while ($r > 0) {
+  $c: $columns * $offsets;
+
+  @while ($c > 0) {
+    .grid .box:nth-child(#{$n}) {
+      grid-column-start: $c - $offsets + 1;
+      grid-column-end: $c + 1;
+      grid-row-start: $r - $offsets + 1;
+      grid-row-end: $r + 1;
+    }
+
+    $c: $c - $offsets;
+    $n: $n - 1;
+  }
+
+  $r: $r - $offsets
+}
+
+@media (max-width: 680px) {
+  .grid {
+    display: block;
+
+    .box {
+      width: auto;
+
+      &>div {
+        width: 100%;
+      }
+    }
+  }
+
+  .btn {
+    overflow: hidden;
+  }
+}

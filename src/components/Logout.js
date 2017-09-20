@@ -1,7 +1,7 @@
 require('styles/components/underlay.scss');
 
 import React from 'react';
-import firebase from '../actions/firebase'
+import firebase from '../sources/firebase'
 
 class AppComponent extends React.Component {
   constructor() {

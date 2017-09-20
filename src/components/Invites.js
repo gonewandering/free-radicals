@@ -3,7 +3,7 @@ require('styles/routes/home.scss');
 import React from 'react';
 import Card from '../components/Card'
 import Underlay from '../components/Underlay'
-import firebase from '../actions/firebase'
+import firebase from '../sources/firebase'
 
 import Invite from './Invite'
 

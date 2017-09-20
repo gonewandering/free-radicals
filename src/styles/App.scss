@@ -1,21 +1,56 @@
-/* Base Application Styles */
+@import './Grid.scss';
+
 body {
-  color: #fff;
-  background: #222;
-}
+  background-color: black;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
 
-.index img {
-  margin: 40px auto;
-  border-radius: 4px;
-  background: #fff;
-  display: block;
-}
+  .logo-box {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    max-width: 150px;
+    text-align: left;
 
-.index .notice {
-  margin: 20px auto;
-  padding: 15px 0;
-  text-align: center;
-  border: 1px solid #000;
-  border-width: 1px 0;
-  background: #666;
+    img {
+      width: 100%;
+    }
+  }
+
+  p,ul,ol,h4,h5,h6,button,a,.btn,label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    line-height: 2em;
+  }
+
+  h1,h2,h3 {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 800;
+  }
+
+  .btn {
+    &.btn-primary {
+      background: black;
+      border: none;
+      color: white;
+    }
+
+    &.btn-white {
+      background: rgba(#0088f7, 1);
+      color: white;
+    }
+  }
+
+  .center {
+    text-align: center;
+    width: 100%;
+  }
+
+  .full-width {
+    width: 100%;
+  }
+
+  .logo-text {
+    color: rgba(#0f22ff, .5);
+  }
 }

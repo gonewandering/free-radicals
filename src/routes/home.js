@@ -1,18 +1,20 @@
 require('styles/routes/home.scss');
 
 import React from 'react';
-import Card from '../components/Card'
-import Underlay from '../components/Underlay'
-import Login from '../components/Login'
-import Logout from '../components/Logout'
-import Invites from '../components/Invites'
+import Reflux from 'reflux';
+import Login from '../components/Login/index'
 
-import firebase from '../actions/firebase'
+import AuthStore from '../stores/auth'
+import AuthActions from '../actions/auth'
 
-class AppComponent extends React.Component {
+import Box from '../components/Box'
 
-  constructor() {
-    super();
+class AppComponent extends Reflux.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.store = AuthStore
 
     this.state = {
       user: {},
@@ -20,67 +22,30 @@ class AppComponent extends React.Component {
     }
   }
 
-  onAuthChange(user) {
-    const self = this;
-
-    if (user) {
-      this.invites = firebase.database().ref('invites/' + user.uid);
-
-      this.invites.once('value').then(value => {
-        self.setState({
-          invites: value.val(),
-          user: user,
-          loading: false
-        });
-      });
-    } else {
-      this.setState({
-        user: user,
-        loading: false
-      })
-    }
-  }
-
-  componentWillMount() {
-    this.auth = firebase.auth().onAuthStateChanged(this.onAuthChange.bind(this));
-  }
-
-  componentWillUnmount() {
-    delete this.auth
-  }
-
   render() {
-    let styles = {
-      backgroundImage: 'url(https://static.pexels.com/photos/259351/pexels-photo-259351.jpeg)'
-    }
-
-    let homeContent = null;
-
-    if (this.state.user) {
-      console.log(this.state.invites);
-
-      homeContent = (
-        <Card>
-          <Invites user={ this.state.user } data={ this.state.invites || {} }></Invites>
-          <Login></Login>
-        </Card>
-      );
-    } else {
-      homeContent = (
-        <Card>
-          <h1>Free Radicals</h1>
-          <p>A group of artists, technologists, and creators focused on improving the world around us—and having fun.</p>
-        </Card>
-      );
-    }
-
     return (
-      <div className="route home">
-        <Underlay styles={ styles }>
-          { homeContent }
-        </Underlay>
+      <div>
+        <div className="grid home">
+          <Box classes={ ['box-black'] } color="#000000">
+            <div>
+              <p>
+                Free Radicals is a community created by a few friends who had a fierce desire to connect creative, inspirational individuals from all ends of the earth. With true passion in immersive data, technology, art, + music—the team’s also invested in creating a transparent environment for social issues, openness + awareness.
+              </p>
+              <p>
+                Already a member, <a className="btn btn-white" href="/profile">login</a>. Or, check out our <a className="btn btn-white" href="/faq">FAQ</a> if you're interested in joining.
+              </p>
+            </div>
+          </Box>
+          <Box background="https://static.pexels.com/photos/270859/pexels-photo-270859.jpeg">
+            <h1 className="logo-text">Free<br />Radicals</h1>
+          </Box>
+          <Box background="https://static.pexels.com/photos/47424/pexels-photo-47424.jpeg" />
+          <Box background="https://static.pexels.com/photos/159045/the-interior-of-the-repair-interior-design-159045.jpeg" />
+          <Box background="https://static.pexels.com/photos/47080/boy-african-africa-child-47080.jpeg"/>
+          <Box background="https://static.pexels.com/photos/64210/hibiscus-blossom-bloom-flower-64210.jpeg" />
+        </div>
       </div>
-    );
+    )
   }
 }
 

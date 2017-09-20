@@ -1,22 +1,25 @@
+require('styles/App.scss');
+
 import 'core-js/fn/object/assign';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Home from './routes/home';
 import Invite from './routes/invite';
+import Profile from './routes/profile';
+import Faq from './routes/faq';
 
 import {
   BrowserRouter as Router,
-  Route,
-  Link
+  Route
 } from 'react-router-dom'
-
-require('styles/App.scss');
 
 let Routes = () => {
   return (
     <Router>
       <div className="app">
         <Route exact path="/" component={ Home } />
+        <Route path="/profile" component={ Profile } />
+        <Route path="/faq" component={ Faq } />
         <Route path="/:uID/:inviteID" component={ Invite } />
       </div>
     </Router>

@@ -4,8 +4,8 @@ import React from 'react';
 import Card from '../components/Card'
 import Underlay from '../components/Underlay'
 import Invites from '../components/Invites'
-import Login from '../components/Login'
-import firebase from '../actions/firebase'
+import Login from '../components/Login/index'
+import firebase from '../sources/firebase'
 
 class AppComponent extends React.Component {
   constructor(props) {
@@ -28,13 +28,6 @@ class AppComponent extends React.Component {
   render() {
     return (
       <div className="route invite">
-        <Underlay>
-          <Card>
-            <Login onChange={ this.onRSVPed.bind(this) }>
-              Welcome { this.state.user.name }, Glad to see you.
-            </Login>
-          </Card>
-        </Underlay>
       </div>
     );
   }
