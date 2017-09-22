@@ -2,21 +2,13 @@ require('styles/routes/home.scss');
 
 import React from 'react';
 import Reflux from 'reflux';
-import Login from '../components/Login/index'
-
-import AuthStore from '../stores/auth'
-import AuthActions from '../actions/auth'
 
 import Box from '../components/Box'
-
-const img = (img) => { return require(img); }
 
 class AppComponent extends Reflux.Component {
 
   constructor(props) {
     super(props);
-
-    this.store = AuthStore
 
     this.state = {
       user: {},
@@ -44,10 +36,10 @@ class AppComponent extends Reflux.Component {
               <h1 className="logo-text lt-b">Free Radicals</h1>
             </div>
           </Box>
-          <Box background={ require("../images/bg/pexels-photo-47424.jpeg") } />
-          <Box background={ require("../images/bg/the-interior-of-the-repair-interior-design-159045.jpeg") } />
-          <Box background={ require("../images/bg/boy-african-africa-child-47080.jpeg") } />
-          <Box background={ require("../images/bg/hibiscus-blossom-bloom-flower-64210.jpeg") } />
+          <Box background={ require('../images/bg/pexels-photo-47424.jpeg') } />
+          <Box background={ require('../images/bg/the-interior-of-the-repair-interior-design-159045.jpeg') } />
+          <Box background={ require('../images/bg/boy-african-africa-child-47080.jpeg') } />
+          <Box background={ require('../images/bg/hibiscus-blossom-bloom-flower-64210.jpeg') } />
         </div>
       </div>
     )

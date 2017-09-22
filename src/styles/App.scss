@@ -1,4 +1,5 @@
 @import './Grid.scss';
+@import './variables.scss';
 
 body {
   background-color: black;
@@ -18,13 +19,13 @@ body {
   }
 
   p,ul,ol,h4,h5,h6,button,a,.btn,label {
-    font-family: 'Montserrat', sans-serif;
+    font-family: $fontRegular;
     font-weight: 300;
     line-height: 2em;
   }
 
   h1,h2,h3 {
-    font-family: 'Archivo Black', sans-serif;
+    font-family: $fontHeadline;
     font-weight: 800;
   }
 
@@ -67,5 +68,12 @@ body {
 
   .logo-text {
     color: rgba(#0f22ff, .5);
+  }
+
+  input.form-control {
+    border: none;
+    border-radius: 0px;
+    border-bottom: solid 6px $colorLight;
+    font-family: $fontRegular;
   }
 }

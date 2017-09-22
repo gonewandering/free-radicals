@@ -5,15 +5,10 @@ import Reflux from 'reflux';
 
 import config from '../config';
 
-import Login from '../components/Login/index'
+import Login from '../components/User/Login'
 import Box from '../components/Box'
-import Invite from '../components/Invite/index'
-
-import InviteActions from '../actions/invite'
-import InviteStore from '../stores/invite'
 
 import AuthStore from '../stores/auth'
-import Checkout from '../components/Checkout/index'
 
 class AppComponent extends Reflux.Component {
   constructor(props) {
@@ -43,18 +38,18 @@ class AppComponent extends Reflux.Component {
 
     return (
       <div className="grid home">
-        <Box background={ require("../images/bg/pexels-photo-234059.jpeg") } />
-        <Box classes={ ["box-white"] } color="#f6e8f9">
+        <Box background={ require('../images/bg/pexels-photo-234059.jpeg') } />
+        <Box classes={ ['box-white'] } color="#f6e8f9">
           <div className="full-width">
             <h1>Profile</h1>
             <Login></Login>
-            { invites.map(renderInvites) }
+            { invites.map(renderInvites.bind(this)) }
           </div>
         </Box>
-        <Box background={ require("../images/bg/pexels-photo-120271.jpeg") } />
-        <Box background={ require("../images/bg/pexels-photo-247292.jpeg") }></Box>
-        <Box background={ require("../images/bg/pexels-photo-251287.jpeg") } />
-        <Box background={ require("../images/bg/nuclear-weapons-test-nuclear-weapon-weapons-test-explosion-73909.jpeg") } />
+        <Box background={ require('../images/bg/pexels-photo-120271.jpeg') } />
+        <Box background={ require('../images/bg/pexels-photo-247292.jpeg') }></Box>
+        <Box background={ require('../images/bg/pexels-photo-251287.jpeg') } />
+        <Box background={ require('../images/bg/nuclear-weapons-test-nuclear-weapon-weapons-test-explosion-73909.jpeg') } />
       </div>
     )
   }

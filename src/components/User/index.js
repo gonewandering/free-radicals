@@ -13,6 +13,7 @@ class AppComponent extends Reflux.Component {
   constructor(props) {
     super(props)
     this.store = AuthStore
+
     this.state = {
       register: props.register || false,
       loading: true
@@ -57,7 +58,7 @@ class AppComponent extends Reflux.Component {
         submitLabel: 'Register for Free Radicals'
       }
 
-      let swapText = (
+      swapText = (
         <div>
           Already have an account, <a href="" onClick={ this.toggleReg.bind(this) }>click here</a>.
         </div>

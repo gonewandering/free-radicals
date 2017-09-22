@@ -3,7 +3,6 @@ require('styles/components/underlay.scss');
 import React from 'react'
 import Reflux from 'reflux'
 
-import Loading from '../Loading'
 import StripeCheckout from 'react-stripe-checkout';
 
 class AppComponent extends Reflux.Component {
@@ -13,7 +12,7 @@ class AppComponent extends Reflux.Component {
     this.state = {
       token: props.register || false
     }
-    
+
     this.props = props || {}
   }
 

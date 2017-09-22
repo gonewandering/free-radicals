@@ -14,18 +14,14 @@ class InviteStore extends Reflux.Store {
   }
 
   markRSVPed(options) {
-    const self = this;
-
     let inviteRef = firebase.database().ref('users/' + options.invite.from + '/invites/' + options.invite.id + '/confirmed');
 
-    return inviteRef.set(options.invitee.uid).then ((res) => {
+    return inviteRef.set(options.invitee.uid).then (() => {
       return options
     })
   }
 
   generateInvites(options) {
-    const self = this;
-
     let invitesAvail = options.invite.count || 1;
     let invites = []
     let iPromises = []
@@ -47,7 +43,7 @@ class InviteStore extends Reflux.Store {
       invitesAvail--
     }
 
-    return Promise.all(iPromises).then(res => {
+    return Promise.all(iPromises).then(() => {
       options.invites = invites;
       return options;
     })
@@ -95,7 +91,6 @@ class InviteStore extends Reflux.Store {
     let inviteRef = firebase.database().ref('users/' + options.uID + '/invites/' + options.inviteID);
 
     return inviteRef.once('value').then(invite => {
-      console.log(invite.val());
       self.setState({
         loading: false,
         invite: invite.val()

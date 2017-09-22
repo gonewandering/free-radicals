@@ -100,7 +100,7 @@ class AuthStore extends Reflux.Store {
     })
   }
 
-  logout(options) {
+  logout() {
     this.setState({
       loading: true
     })
@@ -110,7 +110,7 @@ class AuthStore extends Reflux.Store {
       .catch(this.logoutFailed.bind(this))
   }
 
-  logoutCompleted(user) {
+  logoutCompleted() {
     this.setState({
       status: 'logged-out',
       loading: false,

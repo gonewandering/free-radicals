@@ -6,7 +6,6 @@ import Reflux from 'reflux'
 import Loading from '../Loading'
 import Checkout from '../Checkout'
 import Login from '../Login'
-import InviteList from './inviteList'
 
 import InviteActions from '../../actions/invite'
 import InviteStore from '../../stores/invite'
@@ -35,10 +34,7 @@ class AppComponent extends Reflux.Component {
   }
 
   render() {
-    console.log(this.props);
-
     let content = null;
-    let step = null;
 
     if (this.state.loading === true) {
       return (
@@ -89,8 +85,6 @@ class AppComponent extends Reflux.Component {
       }
 
       if ((this.state.invitee && this.state.invitee.payment) || (this.props.user && this.props.user.invites)) {
-        let invites = (this.state.invitee && this.state.invitee.invites) || this.props.user.invites;
-
         content = (
           <div>
             <h2>Step 3</h2>
