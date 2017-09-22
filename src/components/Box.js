@@ -1,5 +1,4 @@
 require('styles/components/box.scss');
-
 import React from 'react';
 
 class AppComponent extends React.Component {
@@ -11,6 +10,9 @@ class AppComponent extends React.Component {
     classes.push('box')
 
     if (this.props.background) {
+      // let url = '../../' + this.props.background;
+      // let image = require(url);
+      // console.log(image);
       styles.backgroundImage = 'url(' + this.props.background + ')';
     }
 

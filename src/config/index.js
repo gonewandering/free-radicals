@@ -9,5 +9,5 @@ export default {
     storageBucket: 'free-radicals-4ca3a.appspot.com',
     messagingSenderId: '767523430935'
   },
-  baseUrl: 'https://free-radicals-4ca3a.firebaseapp.com'
+  baseUrl: 'https://wearefreeradicals.org'
 }

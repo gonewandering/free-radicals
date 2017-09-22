@@ -38,7 +38,7 @@ class AppComponent extends Reflux.Component {
         <Loading></Loading>
       )
     }
-    
+
     let settings = {
       onSubmit: AuthActions.login,
       submitLabel: 'Login to Free Radicals'
@@ -71,9 +71,7 @@ class AppComponent extends Reflux.Component {
     }
 
     if (this.state.status == 'logged-in') {
-      return (
-        <a href='' onClick={ this.logout }>Hi Lindsay, Sign Out.</a>
-      )
+      return null
     }
 
     return (

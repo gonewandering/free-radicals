@@ -36,7 +36,22 @@ body {
     }
 
     &.btn-white {
-      background: rgba(#0088f7, 1);
+      background: rgba(white, 1);
+      color: black;
+    }
+
+    &.btn-blue{
+      background: rgba(blue, 1);
+      color: white;
+    }
+
+    &.btn-turq {
+      background: rgba(#09a6ad, 1);
+      color: white;
+    }
+
+    &.btn-red {
+      background: rgba(red, 1);
       color: white;
     }
   }

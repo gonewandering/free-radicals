@@ -94,7 +94,7 @@ class AppComponent extends Reflux.Component {
         content = (
           <div>
             <h2>Step 3</h2>
-            <p className="subhead">The only way to get tickets is through a friend (you already know that). Invite a few people.</p>
+            <p className="subhead">Surround yourself with inspiration + celebrate new changes. If you're receiving this invite, you have inspired someone. Invite someone that also inspires you.</p>
             <a href="/profile" className="btn btn-primary btn-lg btn-block">Invite Friends</a>
           </div>
         )
