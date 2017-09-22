@@ -9,6 +9,8 @@ import AuthActions from '../actions/auth'
 
 import Box from '../components/Box'
 
+const img = (img) => { return require(img); }
+
 class AppComponent extends Reflux.Component {
 
   constructor(props) {
@@ -36,16 +38,16 @@ class AppComponent extends Reflux.Component {
               </p>
             </div>
           </Box>
-          <Box background="/images/bg/pexels-photo-270859.jpeg">
+          <Box background={ require('../images/bg/pexels-photo-270859.jpeg') }>
             <div>
               <h1 className="logo-text lt-a">Free Radicals</h1>
               <h1 className="logo-text lt-b">Free Radicals</h1>
             </div>
           </Box>
-          <Box background="/images/bg/pexels-photo-47424.jpeg" />
-          <Box background="/images/bg/the-interior-of-the-repair-interior-design-159045.jpeg" />
-          <Box background="/images/bg/boy-african-africa-child-47080.jpeg"/>
-          <Box background="/images/bg/hibiscus-blossom-bloom-flower-64210.jpeg" />
+          <Box background={ require("../images/bg/pexels-photo-47424.jpeg") } />
+          <Box background={ require("../images/bg/the-interior-of-the-repair-interior-design-159045.jpeg") } />
+          <Box background={ require("../images/bg/boy-african-africa-child-47080.jpeg") } />
+          <Box background={ require("../images/bg/hibiscus-blossom-bloom-flower-64210.jpeg") } />
         </div>
       </div>
     )

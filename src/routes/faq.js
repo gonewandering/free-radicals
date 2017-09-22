@@ -29,16 +29,16 @@ class AppComponent extends Reflux.Component {
 
     return (
       <div className="grid home">
-        <Box background="/images/bg/pexels-photo-234059.jpeg" />
+        <Box background={ require("../images/bg/pexels-photo-234059.jpeg") } />
         <Box classes={ ["box-white"] } color="#f9efe8">
           <div className="full-width">
             <h1>FAQ</h1>
           </div>
         </Box>
-        <Box background="/images/bg/pexels-photo-120271.jpeg" />
-        <Box background="/images/bg/pexels-photo-247292.jpeg"></Box>
-        <Box background="/images/bg/pexels-photo-251287.jpeg" />
-        <Box background="/images/bg/nuclear-weapons-test-nuclear-weapon-weapons-test-explosion-73909.jpeg" />
+        <Box background={ require("../images/bg/pexels-photo-120271.jpeg") } />
+        <Box background={ require("../images/bg/pexels-photo-247292.jpeg") } />
+        <Box background={ require("../images/bg/pexels-photo-251287.jpeg") } />
+        <Box background={ require("../images/bg/nuclear-weapons-test-nuclear-weapon-weapons-test-explosion-73909.jpeg") } />
       </div>
     )
   }

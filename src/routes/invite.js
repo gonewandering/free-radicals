@@ -29,7 +29,7 @@ class AppComponent extends Reflux.Component {
   render() {
     return (
       <div className="grid home">
-        <Box background="/images/bg/pexels-photo-397219.jpeg" />
+        <Box background={ require("../images/bg/pexels-photo-397219.jpeg") } />
         <Box color="#630015">
           <div>
             <h1 className="logo">RSVP</h1>
@@ -41,9 +41,9 @@ class AppComponent extends Reflux.Component {
             <Invite invite={ this.props.match.params } user={ this.state.user } />
           </div>
         </Box>
-        <Box background="/images/bg/business-time-clock-clocks-48770.jpeg" />
-        <Box background="/images/bg/nuclear-weapons-test-nuclear-weapon-weapons-test-explosion-73909.jpeg" />
-        <Box background="/images/bg/soap-bubble-colorful-ball-soapy-water.jpeg" />
+        <Box background={ require("../images/bg/business-time-clock-clocks-48770.jpeg") } />
+        <Box background={ require("../images/bg/nuclear-weapons-test-nuclear-weapon-weapons-test-explosion-73909.jpeg") } />
+        <Box background={ require("../images/bg/soap-bubble-colorful-ball-soapy-water.jpeg") } />
       </div>
     )
   }
