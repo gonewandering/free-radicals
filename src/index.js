@@ -1,3 +1,6 @@
+require('styles/lib/bootstrap.css');
+require('styles/lib/fonts.css');
+
 require('styles/App.scss');
 
 import 'core-js/fn/object/assign';
