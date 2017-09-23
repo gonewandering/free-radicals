@@ -17,6 +17,7 @@ class InviteStore extends Reflux.Store {
     let inviteRef = firebase.database().ref('users/' + options.invite.from + '/invites/' + options.invite.id + '/confirmed');
 
     console.log('confirmed', options.invitee);
+
     return inviteRef.set(options.invitee).then (() => {
       return options
     })
@@ -94,7 +95,7 @@ class InviteStore extends Reflux.Store {
     return inviteRef.once('value').then(invite => {
       self.setState({
         loading: false,
-        invite: invite.val()
+        invite: invite.val() || {status: 'not-found'}
       })
     })
   }

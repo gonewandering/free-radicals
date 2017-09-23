@@ -8,6 +8,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import Messages from './components/messages';
+import Navigation from './components/navigation';
 import Home from './routes/home';
 import Invite from './routes/invite';
 import Profile from './routes/profile';
@@ -23,6 +24,7 @@ let Routes = () => {
   return (
     <div>
       <Messages />
+      <Navigation />
       <Router>
         <div className="app">
           <Route exact path="/" component={ Home } />

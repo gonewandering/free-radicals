@@ -53,6 +53,8 @@ class AuthStore extends Reflux.Store {
   }
 
   setProfile(profile, user) {
+    this.loading.bind(this)(true)
+
     delete profile.password
     profile.uid = user.uid
 

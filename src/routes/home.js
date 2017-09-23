@@ -20,23 +20,15 @@ class AppComponent extends Reflux.Component {
     return (
       <div>
         <div className="grid home">
-          <Box classes={ ['box-black'] } color="#000000">
+          <Box background={ require('../images/bg/pexels-photo-47424.jpeg') } />
+          <Box classes={ ['box-white'] }>
             <div>
-            <p>
-              <a className="btn btn-blue" href="/profile">Members</a> <a className="btn btn-red" href="/next">Our Next Event</a> <a className="btn btn-turq" href="/faq">FAQ</a>
-            </p>
               <p>
                 Free Radicals is a community created by a few friends who had a fierce desire to connect creative, inspirational individuals from all ends of the earth. With true passion in immersive data, technology, art, + music—the team’s also invested in creating a transparent environment for social issues, openness + awareness.
               </p>
             </div>
           </Box>
-          <Box background={ require('../images/bg/pexels-photo-270859.jpeg') }>
-            <div>
-              <h1 className="logo-text lt-a">Free Radicals</h1>
-              <h1 className="logo-text lt-b">Free Radicals</h1>
-            </div>
-          </Box>
-          <Box background={ require('../images/bg/pexels-photo-47424.jpeg') } />
+          <Box background={ require('../images/bg/pexels-photo-270859.jpeg') } />
           <Box background={ require('../images/bg/the-interior-of-the-repair-interior-design-159045.jpeg') } />
           <Box background={ require('../images/bg/boy-african-africa-child-47080.jpeg') } />
           <Box background={ require('../images/bg/hibiscus-blossom-bloom-flower-64210.jpeg') } />

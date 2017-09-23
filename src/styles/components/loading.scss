@@ -1,7 +1,10 @@
 @import '../Variables.scss';
 
 .loading {
-  fong-weight: bold;
+  font-weight: bold;
+  font-family: $fontRegular;
+  width: 100%;
+  text-align: center;
 
   .fa-circle-o-notch {
     color: $colorDark !important;

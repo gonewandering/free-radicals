@@ -20,9 +20,9 @@ class AppComponent extends Reflux.Component {
     return (
       <div className="grid home">
         <Box background={ require('../images/bg/pexels-photo-234059.jpeg') } />
-        <Box classes={ ['box-white'] } color="#f9efe8">
+        <Box classes={ ['box-white'] }>
           <div className="full-width">
-            <h1>FAQ</h1>
+            <h2>FAQ</h2>
           </div>
         </Box>
         <Box background={ require('../images/bg/pexels-photo-120271.jpeg') } />

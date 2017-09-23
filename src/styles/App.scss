@@ -67,6 +67,11 @@ body {
       background: rgba(red, 1);
       color: white;
     }
+
+    &.btn-yellow {
+      background: $colorHighlight;
+      color: black;
+    }
   }
 
   .center {
@@ -112,5 +117,35 @@ body {
     padding: 10px;
     border-radius: 3px;
     box-shadow: 0 1px 5px rgba(black, .4);
+  }
+
+  .navbar {
+    background: $colorHighlight;
+    width: 33.3334vw;
+    overflow: hidden;
+    position: absolute;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+
+    .navbar-collapse {
+      border-top: solid 1px black;
+    }
+
+    button {
+      background: transparent;
+      border: none;
+      font-size: 20px;
+      &:focus {outline:0;}
+    }
+  }
+}
+
+@media (max-width: 680px) {
+  body {
+    .navbar {
+      width: 100%;
+      position: static;
+    }
   }
 }

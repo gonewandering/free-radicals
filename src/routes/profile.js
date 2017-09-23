@@ -63,6 +63,7 @@ class AppComponent extends Reflux.Component {
                 <span className="invite-number">{ i + 1 }.)</span><em>{ invited }</em>
               </div>
             </td>
+            <td></td>
           </tr>
         )
       }

@@ -10,14 +10,17 @@ import Register from '../User/Register'
 import InviteActions from '../../actions/invite'
 import InviteStore from '../../stores/invite'
 
+import AuthStore from '../../stores/auth'
+
 class AppComponent extends Reflux.Component {
   constructor(props) {
     super(props)
-    this.store = InviteStore;
+    this.stores = [AuthStore, InviteStore];
 
     this.state = {
       user: props.user,
-      loading: true
+      loading: true,
+      invite: {}
     }
   }
 
@@ -36,13 +39,13 @@ class AppComponent extends Reflux.Component {
   render() {
     let content = null;
 
-    if (this.state.loading === true) {
+    if (this.state.loading == true) {
       return (
         <Loading></Loading>
       )
     }
 
-    if (this.state.invite == null) {
+    if (this.state.invite.status == 'not-found') {
       content = (
         <div className="full-width">
           <h2>Uh oh</h2>
