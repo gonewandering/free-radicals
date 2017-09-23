@@ -23,7 +23,7 @@ class AppComponent extends Reflux.Component {
           <Box classes={ ['box-black'] } color="#000000">
             <div>
             <p>
-              <a className="btn btn-blue" href="/profile">Members</a> <a className="btn btn-red" href="/faq">Our Next Event</a> <a className="btn btn-turq" href="/faq">FAQ</a>
+              <a className="btn btn-blue" href="/profile">Members</a> <a className="btn btn-red" href="/next">Our Next Event</a> <a className="btn btn-turq" href="/faq">FAQ</a>
             </p>
               <p>
                 Free Radicals is a community created by a few friends who had a fierce desire to connect creative, inspirational individuals from all ends of the earth. With true passion in immersive data, technology, art, + music—the team’s also invested in creating a transparent environment for social issues, openness + awareness.

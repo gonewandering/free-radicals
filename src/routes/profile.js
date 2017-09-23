@@ -39,9 +39,8 @@ class AppComponent extends Reflux.Component {
     return (
       <div className="grid home">
         <Box background={ require('../images/bg/pexels-photo-234059.jpeg') } />
-        <Box classes={ ['box-white'] } color="#f6e8f9">
-          <div className="full-width">
-            <h1>Profile</h1>
+        <Box classes={ ['box-white'] } background={ require('../images/bg/pexels-photo-47424.jpeg') }>
+          <div className="full-width block-black">
             <Login></Login>
             { invites.map(renderInvites.bind(this)) }
           </div>

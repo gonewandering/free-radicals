@@ -5,7 +5,7 @@ import Reflux from 'reflux'
 
 import Loading from '../Loading'
 import Checkout from '../Checkout'
-import Login from '../Login'
+import Login from '../User/Login'
 
 import InviteActions from '../../actions/invite'
 import InviteStore from '../../stores/invite'

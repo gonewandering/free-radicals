@@ -53,9 +53,7 @@ class AppComponent extends Reflux.Component {
           <label>{ this.props.passwordLabel || 'Your Password' }</label>
           <input type="password" id="password-input" className="form-control input-lg input-block" placeholder="Password" />
         </div>
-        <div className="form-group">
-          <button className="btn btn-lg btn-primary btn-block">{ this.props.submitLabel || 'Sign In!'}</button>
-        </div>
+        <button className="btn btn-lg btn-primary btn-block">{ this.props.submitLabel || 'Sign In!'}</button>
       </form>
     )
   }
