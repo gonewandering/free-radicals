@@ -6,7 +6,7 @@ class AppComponent extends React.Component {
   render() {
     return (
       <div className="loading">
-        <p>{ this.props.label || 'Loading...' }</p>
+        <i className="fa fa-circle-o-notch fa-2x fa-spin"></i> Loading...
       </div>
     );
   }

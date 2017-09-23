@@ -3,7 +3,7 @@
 
 body {
   background-color: black;
-  font-family: 'Montserrat', sans-serif;
+  font-family: $fontRegular;
   font-weight: 300;
 
   .logo-box {
@@ -29,9 +29,9 @@ body {
     font-weight: 800;
   }
 
-  label {
+  label, .label {
     display: inline-block;
-    background: lighten(yellow, 20);
+    background: $colorHighlight;
     line-height: 14px;
     padding: 4px;
     text-transform: uppercase;
@@ -87,6 +87,16 @@ body {
     border-radius: 0px;
     border-bottom: solid 6px $colorLight;
     font-family: $fontRegular;
+  }
+
+  input.input-hidden {
+    position: absolute;
+    left: 100000;
+    top: 100000;
+    border: none;
+    background: transparent;
+    color: transparent;
+    opacity: 0;
   }
 
   .block-white {

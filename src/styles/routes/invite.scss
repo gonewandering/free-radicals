@@ -9,16 +9,38 @@
   }
 }
 
-.table .invite-tr {
-  border-bottom: 1px solid black;
-  td {
-    padding: 3px;
+.table {
+  .invite-tr {
+    &:last-child {
+      td {
+        border: none;
+      }
+    }
+    td {
+      border-bottom: 1px solid black;
+      padding: 3px;
+      max-width: 1px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
 
-    .invite-name {
-      font-size: 24px;
+      .invite-url {
+        font-size: 16px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        a {
+          color: #888;
+        }
 
-      .invite-number {
-        font-weight: bold;
+        .invite-number {
+          font-weight: bold;
+        }
+      }
+
+      .input-link {
+        border: none;
+        font-size: 10px;
       }
     }
   }

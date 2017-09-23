@@ -1,3 +1,9 @@
+@import '../Variables.scss';
+
 .loading {
   fong-weight: bold;
+
+  .fa-circle-o-notch {
+    color: $colorDark !important;
+  }
 }

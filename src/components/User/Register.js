@@ -17,7 +17,8 @@ class AppComponent extends React.Component {
       values[kv['name']] = kv['value']
     })
 
-    AuthActions.register(values)
+    this.props.onSubmit && this.props.onSubmit(values)
+    AuthActions.register(values).then(this.props.onRegistered && this.props.onRegistered())
 
     return;
   }

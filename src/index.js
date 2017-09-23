@@ -6,6 +6,8 @@ require('styles/App.scss');
 import 'core-js/fn/object/assign';
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+import Messages from './components/messages';
 import Home from './routes/home';
 import Invite from './routes/invite';
 import Profile from './routes/profile';
@@ -19,15 +21,18 @@ import {
 
 let Routes = () => {
   return (
-    <Router>
-      <div className="app">
-        <Route exact path="/" component={ Home } />
-        <Route path="/profile" component={ Profile } />
-        <Route path="/faq" component={ Faq } />
-        <Route path="/next" component={ Next } />
-        <Route path="/:uID/:inviteID" component={ Invite } />
-      </div>
-    </Router>
+    <div>
+      <Messages />
+      <Router>
+        <div className="app">
+          <Route exact path="/" component={ Home } />
+          <Route path="/profile" component={ Profile } />
+          <Route path="/faq" component={ Faq } />
+          <Route path="/next" component={ Next } />
+          <Route path="/:uID/:inviteID" component={ Invite } />
+        </div>
+      </Router>
+    </div>
   )
 }
 

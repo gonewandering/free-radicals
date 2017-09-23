@@ -7,12 +7,13 @@ import Box from '../components/Box'
 import Invite from '../components/Invite/index'
 
 import AuthStore from '../stores/auth'
+import InviteStore from '../stores/invite'
 
 class AppComponent extends Reflux.Component {
   constructor(props) {
     super(props);
 
-    this.store = AuthStore;
+    this.stores = [AuthStore, InviteStore];
 
     this.state = {
       user: {},
