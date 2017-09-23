@@ -5,7 +5,7 @@ import Reflux from 'reflux'
 
 import Loading from '../Loading'
 import Checkout from '../Checkout'
-import Login from '../User/Login'
+import Register from '../User/Register'
 
 import InviteActions from '../../actions/invite'
 import InviteStore from '../../stores/invite'
@@ -13,7 +13,7 @@ import InviteStore from '../../stores/invite'
 class AppComponent extends Reflux.Component {
   constructor(props) {
     super(props)
-    this.store = InviteStore
+    this.store = InviteStore;
 
     this.state = {
       user: props.user,
@@ -44,7 +44,7 @@ class AppComponent extends Reflux.Component {
 
     if (this.state.invite == null) {
       content = (
-        <div>
+        <div className="full-width">
           <h2>Uh oh</h2>
           <p className="subhead">That invite was not found.</p>
         </div>
@@ -53,7 +53,7 @@ class AppComponent extends Reflux.Component {
 
     if (this.state.invite && this.state.invite.confirmed) {
       content = (
-        <div>
+        <div className="full-width">
           <h2>Uh oh</h2>
           <p className="subhead">That invite was already used.</p>
         </div>
@@ -62,14 +62,14 @@ class AppComponent extends Reflux.Component {
 
     var steps = {
       1: (
-        <div>
+        <div className="full-width">
           <h2>Step 1</h2>
           <p>Register for the event.</p>
-          <Login register={ true } />
+          <Register />
         </div>
       ),
       2: (
-        <div>
+        <div className="full-width">
           <h2>Step 2</h2>
           <p className="subhead">Tickets for the party are $10 and all profits go to Miss Amazing!</p>
           <Checkout user={ this.props.user } onPayment={ this.onPayment.bind(this) }></Checkout>
@@ -86,7 +86,7 @@ class AppComponent extends Reflux.Component {
 
       if ((this.state.invitee && this.state.invitee.payment) || (this.props.user && this.props.user.invites)) {
         content = (
-          <div>
+          <div className="full-width">
             <h2>Step 3</h2>
             <p className="subhead">Surround yourself with inspiration + celebrate new changes. If you're receiving this invite, you have inspired someone. Invite someone that also inspires you.</p>
             <a href="/profile" className="btn btn-primary btn-lg btn-block">Invite Friends</a>
@@ -95,11 +95,7 @@ class AppComponent extends Reflux.Component {
       }
     }
 
-    return (
-      <div>
-        { content }
-      </div>
-    )
+    return content
   }
 }
 

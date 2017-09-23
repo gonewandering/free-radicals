@@ -1,3 +1,29 @@
 .invite-box {
   margin-top: 40px;
 }
+
+.invite-url {
+  a {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+.table .invite-tr {
+  border-bottom: 1px solid black;
+  td {
+    padding: 3px;
+
+    .invite-name {
+      font-size: 24px;
+
+      .invite-number {
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.align-right {
+  text-align: right;
+}

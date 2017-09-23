@@ -1,15 +1,11 @@
 import Reflux from 'reflux'
 
-let authConf = {
-  register: {
-    asyncResult: true
-  },
-  login: {
-    asyncResult: true
-  },
-  logout: {
-    asyncResult: true
-  }
-}
+let authConf = [
+  'register',
+  'login',
+  'logout',
+  'getProfile',
+  'setProfile'
+]
 
 export default Reflux.createActions(authConf)

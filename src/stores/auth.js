@@ -7,123 +7,84 @@ class AuthStore extends Reflux.Store {
   constructor() {
     super()
 
-    const self = this
-
     this.listenToMany(AuthActions)
 
     this.state = {
       loading: true
     }
 
-    firebase.auth().onAuthStateChanged(user => {
-      self.updateState.bind(self)(user)
+    firebase.auth().onAuthStateChanged(this.getProfile.bind(this))
+  }
+
+  loading(loading) {
+    loading = loading || false
+
+    this.setState({
+      loading: loading
     })
   }
 
-  updateState(user) {
+  register(options) {
+    this.loading.bind(this)(true)
+
+    return firebase.auth().createUserWithEmailAndPassword(options.email, options.password)
+      .then(this.setProfile.bind(this, options))
+  }
+
+  login(options) {
     const self = this;
+    this.loading.bind(this)(true)
 
-    if (user && user.uid) {
-      let userRef = firebase.database().ref('users/' + user.uid);
-
-      userRef.once('value').then(invitee => {
-        let profile = _.extend({}, user, invitee.val() || {});
-
+    return firebase.auth().signInWithEmailAndPassword(options.email, options.password)
+      .then(this.getProfile)
+      .catch(() => {
         self.setState({
           loading: false,
-          status: 'logged-in',
-          user: profile
+          user: {}
         })
-      });
-    } else {
-      this.setState({
+      })
+  }
+
+  logout() {
+    this.loading.bind(this)(true)
+
+    return firebase.auth().signOut()
+      .then(this.getProfile)
+  }
+
+  setProfile(profile, user) {
+    delete profile.password
+    profile.uid = user.uid
+
+    let userRef = firebase.database().ref('users/' + user.uid);
+    return userRef.set(profile).then(this.getProfile.bind(this, user))
+  }
+
+  getProfile(user) {
+    this.loading.bind(this)(true)
+
+    let self = this;
+    user = user || {}
+
+    if (!user.uid) {
+      return self.setState({
         loading: false,
-        status: 'logged-out',
         user: {}
       })
     }
 
-  }
+    let userRef = firebase.database().ref('users/' + user.uid);
 
-  register(options) {
-    if (!options.email || !options.password) { return this.registerFailed(); }
+    return userRef.once('value').then(profile => {
+      let up = _.extend({
+        uid: user.uid
+      }, profile.val());
 
-    this.setState({
-      loading: true
-    })
-
-    firebase.auth().createUserWithEmailAndPassword(options.email, options.password)
-      .then(this.registerCompleted.bind(this))
-      .catch(this.registerFailed.bind(this))
-  }
-
-  registerCompleted(user) {
-    this.setState({
-      status: 'logged-in',
-      loading: false,
-      user: user
-    })
-  }
-
-  registerFailed() {
-    this.setState({
-      status: 'error',
-      loading: false,
-      user: {}
-    })
-  }
-
-  login(options) {
-    this.setState({
-      loading: true
-    })
-
-    firebase.auth().signInWithEmailAndPassword(options.email, options.password)
-      .then(this.loginCompleted.bind(this))
-      .catch(this.loginFailed.bind(this))
-  }
-
-  loginCompleted(user) {
-    this.setState({
-      status: 'logged-in',
-      loading: false,
-      user: user
-    })
-  }
-
-  loginFailed(err) {
-    this.setState({
-      status: 'error',
-      loading: false,
-      user: {},
-      err: err
-    })
-  }
-
-  logout() {
-    this.setState({
-      loading: true
-    })
-
-    firebase.auth().signOut()
-      .then(this.logoutCompleted.bind(this))
-      .catch(this.logoutFailed.bind(this))
-  }
-
-  logoutCompleted() {
-    this.setState({
-      status: 'logged-out',
-      loading: false,
-      user: {}
-    })
-  }
-
-  logoutFailed() {
-    this.setState({
-      status: 'error',
-      loading: false,
-      user: {}
-    })
+      self.setState({
+        loading: false,
+        user: up
+      })
+    });
   }
 }
 

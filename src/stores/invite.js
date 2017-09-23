@@ -16,7 +16,8 @@ class InviteStore extends Reflux.Store {
   markRSVPed(options) {
     let inviteRef = firebase.database().ref('users/' + options.invite.from + '/invites/' + options.invite.id + '/confirmed');
 
-    return inviteRef.set(options.invitee.uid).then (() => {
+    console.log('confirmed', options.invitee);
+    return inviteRef.set(options.invitee).then (() => {
       return options
     })
   }
@@ -25,7 +26,7 @@ class InviteStore extends Reflux.Store {
     let invitesAvail = options.invite.count || 1;
     let invites = []
     let iPromises = []
-    let inviteeRef = firebase.database().ref('users/' + options.invitee.uid)
+    let inviteeRef = firebase.database().ref('users/' + options.invitee.uid + '/invites')
 
     while(invitesAvail > 0) {
       let id = Math.random().toString(36).substring(7);
@@ -39,7 +40,7 @@ class InviteStore extends Reflux.Store {
 
       invites.push(invite);
 
-      iPromises.push(inviteeRef.child('invites/' + id).set(invite))
+      iPromises.push(inviteeRef.child(id).set(invite))
       invitesAvail--
     }
 
@@ -51,17 +52,17 @@ class InviteStore extends Reflux.Store {
 
   createUserProfile(options) {
     let userRef = firebase.database().ref('users/' + options.invitee.uid);
+    let promises = []
 
-    options.invitee = {
-      name: options.invitee.displayName,
-      email: options.invitee.email,
-      uid: options.invitee.uid,
-      payment: options.payment,
-      invitedBy: options.invite.from,
-      inviteID: options.invite.id
-    }
+    options.invitee.payment = options.payment;
+    options.invitee.invitedBy = options.invite.from;
+    options.invitee.inviteID = options.invite.id;
 
-    return userRef.set(options.invitee)
+    console.log('invitee', options.invitee);
+
+    return userRef.set(options.invitee).then(() => {
+      return options;
+    })
   }
 
   rsvpCompleted(options) {

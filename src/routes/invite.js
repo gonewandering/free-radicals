@@ -32,9 +32,7 @@ class AppComponent extends Reflux.Component {
           </div>
         </Box>
         <Box classes={ ['box-white'] } >
-          <div className="invite-box">
-            <Invite invite={ this.props.match.params } user={ this.state.user } />
-          </div>
+          <Invite invite={ this.props.match.params } user={ this.state.user } />
         </Box>
         <Box background={ require('../images/bg/business-time-clock-clocks-48770.jpeg') } />
         <Box background={ require('../images/bg/nuclear-weapons-test-nuclear-weapon-weapons-test-explosion-73909.jpeg') } />
