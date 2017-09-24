@@ -1,3 +1,5 @@
+@import '../Variables.scss';
+
 .invite-box {
   margin-top: 40px;
 }
@@ -38,9 +40,22 @@
         }
       }
 
+      .invite-input {
+        border: none;
+        padding: 0;
+        display: inline-block;
+        margin-left: 6px;
+        font-style: italic;
+        background: lighten($colorHighlight, 20);
+      }
+
       .input-link {
         border: none;
         font-size: 10px;
+      }
+
+      .invite-label {
+        width: 100%;
       }
     }
   }

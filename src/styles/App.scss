@@ -18,7 +18,7 @@ body {
     }
   }
 
-  p,ul,ol,h4,h5,h6,button,a,.btn,label {
+  p,ul,ol,h4,h5,h6,button,a,.btn,label,em,strong,span {
     font-family: $fontRegular;
     font-weight: 300;
     line-height: 2em;
@@ -37,6 +37,14 @@ body {
     text-transform: uppercase;
     font-size: 12px;
     font-weight: bold;
+
+    &.label-blue {
+      background: #66CCFF;
+    }
+
+    &.label-green {
+      background: #66FFCC;
+    }
   }
   .btn {
 
@@ -130,6 +138,7 @@ body {
 
     .navbar-collapse {
       border-top: solid 1px black;
+
     }
 
     button {

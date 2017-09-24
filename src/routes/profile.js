@@ -11,6 +11,8 @@ import Box from '../components/Box'
 
 import AuthStore from '../stores/auth'
 import AuthActions from '../actions/auth'
+import InviteActions from '../actions/invite'
+import InviteStore from '../stores/invite'
 
 import MessageActions from '../actions/message'
 
@@ -18,7 +20,7 @@ class AppComponent extends Reflux.Component {
   constructor(props) {
     super(props);
 
-    this.store = AuthStore;
+    this.stores = [AuthStore, InviteStore];
 
     this.state = {
       loading: false,
@@ -30,18 +32,19 @@ class AppComponent extends Reflux.Component {
     e.preventDefault();
 
     AuthActions.logout();
-
     MessageActions.send('Logged out of Free Radicals. Come back soon!');
   }
 
-  copyUrl(sel, e) {
+  sendInvite(sel, e) {
     e.preventDefault();
 
-    var textarea = $('input[name=' + sel + ']');
-    textarea.select();
-    document.execCommand('copy');
+    sel.email = $('input[name=' + sel.uID + '-' + sel.inviteID + ']').val();
 
-    MessageActions.send('Invite Link Copied! Now go send it to someone.');
+    InviteActions.sendInvite(sel);
+    MessageActions.send('Invite sent to ' + sel.email +'.');
+
+    this.state.user.invites[sel.inviteID].sent = sel.email;
+    this.setState(this.state);
   }
 
   render() {
@@ -50,20 +53,37 @@ class AppComponent extends Reflux.Component {
 
     let renderInvites = (invite, i) => {
       let url = config.baseUrl + '/' + this.state.user.uid + '/' + invite.id;
-      let inviteSel = 'inv-' + this.state.user.uid + '-' + invite.id;
-      let invited = null
+      let sel = {uID: this.state.user.uid, inviteID: invite.id};
+      let invited = null;
 
       if (invite.confirmed) {
         invited = ' ' + invite.confirmed.firstName + ' ' + invite.confirmed.lastName
 
         return (
           <tr className="invite-tr">
-            <td width="60%">
+            <td>
               <div className="invite-name">
-                <span className="invite-number">{ i + 1 }.)</span><em>{ invited }</em>
+                <span className="invite-number">{ i + 1 }.)</span><em> { invite.confirmed.email }</em>
               </div>
             </td>
-            <td></td>
+            <td width="70px">
+              <span className="label label-green">Confirmed!</span>
+            </td>
+          </tr>
+        )
+      }
+
+      if (invite.sent) {
+        return (
+          <tr className="invite-tr">
+            <td>
+              <div className="invite-name">
+                <span className="invite-number">{ i + 1 }.)</span><em> { invite.sent }</em>
+              </div>
+            </td>
+            <td className="align-right">
+              <span className="label label-blue">Sent!</span> <a href={ url } target="_blank" className="label label-green">Invite URL</a>
+            </td>
           </tr>
         )
       }
@@ -72,12 +92,12 @@ class AppComponent extends Reflux.Component {
         <tr className="invite-tr">
           <td>
             <div className="invite-url">
-              <span className="invite-number">{ i + 1 }.)</span> <a href={ url } target="_blank">{ url }</a>
+              <span className="invite-number">{ i + 1 }.)</span>
+              <input className="invite-input form-control input-sm" name={ sel.uID + '-' + sel.inviteID } />
             </div>
           </td>
           <td width="70px" className="align-right">
-            <a className="label" href={ url } onClick={ this.copyUrl.bind(this, inviteSel ) }>Copy</a>
-            <input className="input-hidden" name={ inviteSel } value={ url } />
+            <a className="label" href={ url } onClick={ this.sendInvite.bind(this, sel) }>Send</a>
           </td>
         </tr>
       )

@@ -1,6 +1,4 @@
-'use strict';
-
-export default {
+module.exports = {
   firebase: {
     apiKey: 'AIzaSyCBR2el-lzq7LZvXG7bZJ7ivYNY1Ui3tYc',
     authDomain: 'free-radicals-4ca3a.firebaseapp.com',
@@ -9,9 +7,9 @@ export default {
     storageBucket: 'free-radicals-4ca3a.appspot.com',
     messagingSenderId: '767523430935'
   },
-  stripe: {
-    key: 'pk_test_PAOzpym0eYI03x7kmJYWTNRr'
-  },
-  baseUrl: 'https://wearefreeradicals.org',
-  apiUrl: 'https://us-central1-free-radicals-4ca3a.cloudfunctions.net'
+  mailgun: {
+    public: 'pubkey-294896dbe85f0aa49a73f7dc64034fde',
+    apiKey: 'key-f64abc0e6b27ad61b44ce433b66afaba',
+    domain: 'sandbox343208dffe1d4fdfb17b452ab527eaf8.mailgun.org'
+  }
 }

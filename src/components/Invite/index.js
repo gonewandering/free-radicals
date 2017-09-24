@@ -96,6 +96,15 @@ class AppComponent extends Reflux.Component {
           </div>
         )
       }
+
+      if (this.state.invite.from === this.props.user.uid) {
+        content = (
+          <div className="full-width">
+            <h2>Send this!</h2>
+            <p className="subhead">Send this URL to someone who inspires you. They'll be able to join the party on the 14th!</p>
+          </div>
+        )
+      }
     }
 
     return content

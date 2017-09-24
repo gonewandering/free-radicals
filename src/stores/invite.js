@@ -1,5 +1,9 @@
 import Reflux from 'reflux'
+import $ from 'jquery'
+
+import config from '../config'
 import InviteActions from '../actions/invite'
+
 import firebase from '../sources/firebase'
 
 class InviteStore extends Reflux.Store {
@@ -15,8 +19,6 @@ class InviteStore extends Reflux.Store {
 
   markRSVPed(options) {
     let inviteRef = firebase.database().ref('users/' + options.invite.from + '/invites/' + options.invite.id + '/confirmed');
-
-    console.log('confirmed', options.invitee);
 
     return inviteRef.set(options.invitee).then (() => {
       return options
@@ -59,8 +61,6 @@ class InviteStore extends Reflux.Store {
     options.invitee.invitedBy = options.invite.from;
     options.invitee.inviteID = options.invite.id;
 
-    console.log('invitee', options.invitee);
-
     return userRef.set(options.invitee).then(() => {
       return options;
     })
@@ -97,6 +97,22 @@ class InviteStore extends Reflux.Store {
         loading: false,
         invite: invite.val() || {status: 'not-found'}
       })
+    })
+  }
+
+  sendInvite(options) {
+    const self = this;
+    this.setState({
+      loading: true
+    });
+
+    let inviteRef = firebase.database().ref('users/' + options.uID + '/invites/' + options.inviteID);
+
+    let emailSend = $.get(config.apiUrl + '/send?template=invite&email=' + options.email + '&uid=' + options.uID)
+      .catch(err => { console.log(err); })
+
+    return emailSend.then(() => {
+      return inviteRef.child('sent').set(options.email)
     })
   }
 }

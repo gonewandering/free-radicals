@@ -1,0 +1,19 @@
+{
+  "name": "free-radicals-functions",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.4",
+    "firebase": "^4.4.0",
+    "firebase-admin": "^5.2.1",
+    "firebase-functions": "^0.6.3",
+    "handlebars": "^4.0.10",
+    "mailgun-js": "^0.13.1"
+  }
+}
