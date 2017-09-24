@@ -21,11 +21,10 @@ class AppComponent extends Reflux.Component {
       <div>
         <div className="grid home">
           <Box background={ require('../images/bg/pexels-photo-47424.jpeg') } />
-          <Box classes={ ['box-white'] }>
+          <Box color="#001122">
             <div>
-              <p>
-                Free Radicals is a community created by a few friends who had a fierce desire to connect creative, inspirational individuals from all ends of the earth. With true passion in immersive data, technology, art, + music—the team’s also invested in creating a transparent environment for social issues, openness + awareness.
-              </p>
+              <p>A passionate group of friends in New York, interested in improving the world around us through <strong>art</strong>, <strong>technology</strong> & <strong>design</strong>.</p>
+              <p><i className="fa fa-circle fa-2x text-blue"></i> <i className="fa fa-circle fa-2x text-turq"></i> <i className="fa fa-circle fa-2x text-yellow"></i></p>
             </div>
           </Box>
           <Box background={ require('../images/bg/pexels-photo-270859.jpeg') } />

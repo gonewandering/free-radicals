@@ -108,7 +108,7 @@ class InviteStore extends Reflux.Store {
 
     let inviteRef = firebase.database().ref('users/' + options.uID + '/invites/' + options.inviteID);
 
-    let emailSend = $.get(config.apiUrl + '/send?template=invite&email=' + options.email + '&uid=' + options.uID)
+    let emailSend = $.get(config.apiUrl + '/send?template=invite&email=' + options.email + '&uid=' + options.uID + '&iid=' + options.inviteID)
       .catch(err => { console.log(err); })
 
     return emailSend.then(() => {

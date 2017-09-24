@@ -87,6 +87,10 @@ $n: $rows * $columns;
         padding: 0;
         height: 0;
       }
+
+      &:first-child {
+        margin-top: 58px;
+      }
     }
   }
 

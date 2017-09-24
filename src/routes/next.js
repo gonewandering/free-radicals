@@ -20,15 +20,19 @@ class AppComponent extends Reflux.Component {
     return (
       <div className="grid home">
         <Box background={ require('../images/bg/pexels-photo-234059.jpeg') } />
-        <Box classes={ ['box-white'] }>
-          <div className="full-width">
-            <h2>Our Next Event</h2>
-            <p></p>
+        <Box color="#000">
+          <div className="full-width align-center">
+            <h2>In Good Company</h2>
+            <h4>October 18th, Williamsburg</h4>
           </div>
         </Box>
-        <Box background={ require('../images/bg/pexels-photo-120271.jpeg') } />
-        <Box background={ require('../images/bg/pexels-photo-247292.jpeg') } />
+        <Box classes={ ['box-white'] }>
+          <div>
+            <p>Our next party will be held on October 18th, in Williamsburg. Two DJs, art and a specially curated ope cocktail bar help us welcome in fall in style.</p>
+          </div>
+        </Box>
         <Box background={ require('../images/bg/pexels-photo-251287.jpeg') } />
+        <Box background={ require('../images/bg/pexels-photo-247292.jpeg') } />
         <Box background={ require('../images/bg/nuclear-weapons-test-nuclear-weapon-weapons-test-explosion-73909.jpeg') } />
       </div>
     )

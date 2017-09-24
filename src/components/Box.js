@@ -19,6 +19,8 @@ class AppComponent extends React.Component {
 
     if (!this.props.children) {
       classes.push('empty');
+    } else {
+      classes.push('content');
     }
 
     if (this.props.logo) {

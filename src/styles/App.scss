@@ -2,7 +2,8 @@
 @import './variables.scss';
 
 body {
-  background-color: black;
+  background: black url('../images/bg/pexels-photo-270859.jpeg');
+  background-position: center bottom;
   font-family: $fontRegular;
   font-weight: 300;
 
@@ -25,9 +26,12 @@ body {
   }
 
   h1,h2,h3 {
-    font-family: $fontRegular;
+    font-family: $fontHeadline;
     font-weight: 300;
     color: #444;
+    margin: 10px 0;
+    padding: 0;
+    text-transform: uppercase;
   }
 
   label, .label {
@@ -40,11 +44,21 @@ body {
     font-weight: bold;
 
     &.label-blue {
-      background: #66CCFF;
+      background: #0099FF;
+      color: white;
     }
 
     &.label-green {
-      background: #66FFCC;
+      background: #009966;
+      color: white;
+    }
+
+    &.label-yellow {
+      background: $colorHighlight;
+      color: black;
+      a {
+        color: black;
+      }
     }
   }
   .btn {
@@ -139,7 +153,16 @@ body {
 
     .navbar-collapse {
       border-top: solid 1px black;
+    }
 
+    .navbar-brand {
+      font-family: $fontHeadline;
+      font-size: 24px;
+      line-height: 24px;
+
+      .gray {
+        color: #555;
+      }
     }
 
     button {
@@ -149,13 +172,40 @@ body {
       &:focus {outline:0;}
     }
   }
+
+  .text-red {
+    color: #FF0000;
+  }
+
+  .text-blue {
+    color: #5599CC;
+  }
+
+  .text-turq {
+    color: #99AACC;
+  }
+
+  .text-yellow {
+    color: lighten(yellow, 20);
+  }
+
+  .text-white {
+    color: white;
+  }
 }
 
 @media (max-width: 680px) {
   body {
+    background-attachment: fixed;
+
     .navbar {
       width: 100%;
-      position: static;
+      position: fixed;
+      z-index: 2000;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
     }
   }
 }

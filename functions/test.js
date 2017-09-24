@@ -1,4 +1,4 @@
-var functions = require('./index');
+var templates = require('./templates/index');
 
 var stub = {
   query: {
@@ -21,4 +21,11 @@ var res = {
   }
 }
 
-functions.send(stub, res);
+var template = templates['rsvp'];
+
+template.template.then((template) => {
+  console.log(template);
+})
+
+// var content = template.template(res);
+// console.log(content);

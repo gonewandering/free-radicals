@@ -1,5 +1,6 @@
 const fs = require('fs');
 const Handlebars = require('handlebars');
+const inline = require('inline-css');
 
 function template(path) {
   return new Promise(function (res, cat) {
@@ -11,20 +12,27 @@ function template(path) {
 }
 
 function compile(path) {
-  return template(path).then(function (str) {
-    return Handlebars.compile(str);
-  }).catch(function (err) {
-    console.log(err);
-  })
+  return template(path)
+    .then(str => {
+      let rend = inline(str, {
+        url: 'https://wearefreeradicals.org'
+      });
+
+      return rend;
+    })
+    .then(Handlebars.compile)
+    .catch(function (err) {
+      console.log(err);
+    })
 }
 
 module.exports = {
   invite: {
-    subject: 'Congratulations, You\'ve received an invite to Fall',
+    subject: 'You\'re invited to In Good Company.',
     template: compile('./templates/invite.handlebars')
   },
   rsvp: {
-    subject: 'Thanks for RSVPing to Fall',
+    subject: 'Thanks for RSVPing to In Good Company',
     template: compile('./templates/rsvp.handlebars')
   }
 }

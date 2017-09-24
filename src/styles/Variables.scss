@@ -1,6 +1,11 @@
-$fontRegular: 'Montserrat', sans-serif;
-$fontHeadline: 'Archivo Black', sans-serif;
-
 $colorDark: black;
 $colorLight: #DDD;
-$colorHighlight: lighten(yellow, 20);
+$colorHighlight: lighten(yellow, 22);
+
+@font-face {
+    font-family: Jaapokkie;
+    src: url(/fonts/jaapokkienchance-regular.woff);
+}
+
+$fontRegular: 'Montserrat', sans-serif;
+$fontHeadline: 'Jaapokkie', sans-serif;

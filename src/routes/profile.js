@@ -91,7 +91,7 @@ class AppComponent extends Reflux.Component {
             </td>
             <td className="align-right">
               <div className="invite-url">
-                <span className="label label-blue">Sent!</span> <a href={ url } target="_blank" className="label label-green">Invite URL</a>
+                <span className="label label-blue">Sent!</span> <a href={ url } target="_blank" className="label label-green"><i className="fa fa-angle-right"></i></a>
               </div>
             </td>
           </tr>
@@ -103,12 +103,12 @@ class AppComponent extends Reflux.Component {
           <td>
             <div className="invite-url">
               <span className="invite-number">{ i + 1 }.)</span>
-              <input className="invite-input form-control input-sm" name={ sel.uID + '-' + sel.inviteID } />
+              <input className="invite-input form-control input-sm" placeholder="Invitee Email" name={ sel.uID + '-' + sel.inviteID } />
             </div>
           </td>
           <td width="70px" className="align-right">
             <div className="invite-url">
-              <a className="label" href={ url } onClick={ this.sendInvite.bind(this, sel) }>Send</a>
+              <a className="label-yellow label" href={ url } onClick={ this.sendInvite.bind(this, sel) }>Send</a>
             </div>
           </td>
         </tr>
@@ -140,9 +140,10 @@ class AppComponent extends Reflux.Component {
             { headline }
             <Login>
               <h2>Hi, { this.state.user.firstName }!</h2>
-              <p>You've RSVPed to the next Free Radicals event. Below are your invites. You'll be able to see when they're used and by who.</p>
+              <p>You've RSVPed to In Good Company, our Fall Party on October 18th. Each person who RSVPs gets one or more invites to send to friends. Yours are below. Send them soon. This event is limited to 120 people, and we'll stop accepting RSVPs when we reach that number.</p>
+              <h4>Your Invitations</h4>
               { invitesTable }
-              <a className="btn btn-sm btn-primary" href="" onClick={ this.logout }>Sign Out!</a>
+              <small>Emails will never be used for anything but sending invites!</small>
             </Login>
           </div>
         </Box>
