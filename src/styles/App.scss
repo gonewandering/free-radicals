@@ -2,7 +2,7 @@
 @import './variables.scss';
 
 body {
-  background: black url('../images/bg/pexels-photo-270859.jpeg');
+  background: black;
   background-position: center bottom;
   font-family: $fontRegular;
   font-weight: 300;
@@ -197,6 +197,7 @@ body {
 @media (max-width: 680px) {
   body {
     background-attachment: fixed;
+    background: black url('../images/bg/pexels-photo-270859.jpeg');
 
     .navbar {
       width: 100%;
