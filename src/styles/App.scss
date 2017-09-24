@@ -163,6 +163,10 @@ body {
       .gray {
         color: #555;
       }
+
+      &.mobile {
+        display: none;
+      }
     }
 
     button {
@@ -207,6 +211,15 @@ body {
 
     p:last-child {
       margin-bottom: 0;
+    }
+    .navbar {
+      .navbar-brand {
+        display: none;
+
+        &.mobile {
+          display: block;
+        }
+      }
     }
   }
 }

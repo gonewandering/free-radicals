@@ -25,11 +25,17 @@ class AppComponent extends Reflux.Component {
   render() {
     return (
       <div className="grid home">
-        <Box background={ require('../images/bg/pexels-photo-397219.jpeg') } />
-        <Box color="#630015">
-          <div>
-            <h1 className="logo">RSVP</h1>
-            <p>10/14: Ready for take off? “In Good Company” kicks off in autumn-- because as the seasons begin to change, we are gifted with a moment to reflect on the people who have changed our lives and to open ourselves up to unexpected new connections that will shape us for years to come.</p>
+        <Box background="https://static.pexels.com/photos/342520/pexels-photo-342520.jpeg" />
+        <Box color="#001122">
+          <div className="rsvp-text full-width">
+            <h1>In Good Company</h1>
+            <p className="sub-head">An event to celebrate the creative in all of us. Benefiting the awesome charity <a href="https://missamazing.org">Miss Amazing</a>. DJ, Cocktails, Art. Friends.</p>
+            <p><i className="fa fa-circle fa-2x text-blue"></i> <i className="fa fa-circle fa-2x text-turq"></i> <i className="fa fa-circle fa-2x text-yellow"></i></p>
+            <h3>Saturday, October 14th, 2017</h3>
+            <h5><span>9PM-2AM</span> | 411 Kent Ave, Brooklyn</h5>
+            <h5>$25 entry | Open bar</h5>
+            <h4 className="text-yellow">Invite Only</h4>
+            <p className="detail-text">All proceeds from the party go to <a href="http://missamazing.org">Miss Amazing</a>.</p>
           </div>
         </Box>
         <Box classes={ ['box-white'] } >

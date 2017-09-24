@@ -32,7 +32,9 @@ class AppComponent extends Reflux.Component {
   render() {
     return (
       <nav className="navigation navbar navbar-light">
-        <a className="navbar-brand" href="/">FREE RADICALS <span className="gray">NYC</span></a>
+        <a className="navbar-brand" href="/">
+          FREE RADICALS <span className="gray">NYC</span></a>
+        <a className="navbar-brand mobile" href="/">FR <span className="gray">NYC</span></a>
 
         <button onClick={ this.toggleNav.bind(this) }>
           <i className={ 'fa' + (this.state.nav ? ' fa-angle-left' : ' fa-angle-right') }></i>

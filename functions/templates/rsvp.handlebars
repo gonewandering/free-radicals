@@ -1,2 +1,52 @@
-<h1>This is an RSVP {{ firstName }}.</h1>
-<p>Get excited. You're nere now...</p>
+<style>
+  td,p,li,strong,a {
+    font-size: 18px;
+    color: #000;
+    font-weight: 300;
+  }
+
+  .button {
+    display: block;
+    padding: 10px 30px;
+    font-size: 18px;
+    font-family: arial;
+    background: #ffff70;
+    color: black;
+    text-align: center;
+    width: 100%;
+    border-radius: 3px;
+    text-decoration: none;
+    font-weight: 300;
+  }
+
+  .logo-header {
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  .logo {
+    font-size: 60px;
+    font-weight: 300;
+    color: white;
+    width: 400px;
+  }
+</style>
+<table>
+  <tbody>
+    <tr>
+      <td class="logo-header">
+        <img class="logo" src="https://wearefreeradicals.org/logo.png"></img>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Hey {{ user.firstName}}!</p>
+        <p>Thanks for RSVP'ing for In Good Company. We're really excited that you're coming!</p>
+        <p>If you haven't yet, make sure to invite anyone you'd like to have join using your <a href="https://wearefreeradicals.org/profile">invite page</a>. The event will sell out extremely quickly and we'd hate to miss your friends!</p>
+        <p>We'll send an email with directions to the venue the week of the party. When you get there, just let the doorman know your name.</p>
+        <p>Have questions? Send us an email (info@wearefreeradicals.org). Looking forward to seeing you on the 14th!</p>
+        <p>--the Free Radicals</p>
+      </td>
+    </tr>
+  </tbody>
+</table>

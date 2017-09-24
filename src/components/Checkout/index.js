@@ -24,7 +24,7 @@ class AppComponent extends Reflux.Component {
 
   render() {
     return (
-      <StripeCheckout token={ this.onToken.bind(this) } name={ 'In Good Company' } image={ 'https://static.pexels.com/photos/164703/pexels-photo-164703.jpeg' } description={ 'One ticket to In Good Company on 10/14' } email={ this.props.user.email } stripeKey={ config.stripe.key } amount={1000}>
+      <StripeCheckout token={ this.onToken.bind(this) } name={ 'In Good Company' } image={ 'https://static.pexels.com/photos/164703/pexels-photo-164703.jpeg' } description={ 'One ticket to In Good Company on 10/14' } email={ this.props.user.email } stripeKey={ config.stripe.key } amount={2500}>
         <button className="btn btn-primary btn-lg btn-block">Buy a ticket!</button>
       </StripeCheckout>
     )

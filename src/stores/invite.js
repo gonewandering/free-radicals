@@ -83,8 +83,14 @@ class InviteStore extends Reflux.Store {
     return this.createUserProfile(options)
       .then(this.markRSVPed.bind(this, options))
       .then(this.generateInvites.bind(this, options))
+      .then(this.sendRSVP.bind(this, options))
       .then(this.rsvpCompleted.bind(this, options))
       .catch(this.rsvpFailed);
+  }
+
+  sendRSVP(options) {
+    return $.get(config.apiUrl + '/send?template=rsvp&email=' + options.invitee.email + '&uid=' + options.invitee.uID)
+      .catch(err => { console.log(err); })
   }
 
   lookup(options) {

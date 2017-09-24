@@ -74,7 +74,7 @@ class AppComponent extends Reflux.Component {
       2: (
         <div className="full-width">
           <h2>Step 2</h2>
-          <p className="subhead">Tickets for the party are $10 and all profits go to Miss Amazing!</p>
+          <p className="subhead">Your $25 donation gets you in the door and covers the bar and the DJs. You can only buy one but you'll have a chance in a moment to invite friends.</p>
           <Checkout user={ this.props.user } onPayment={ this.onPayment.bind(this) }></Checkout>
         </div>
       )
@@ -91,7 +91,7 @@ class AppComponent extends Reflux.Component {
         content = (
           <div className="full-width">
             <h2>Step 3</h2>
-            <p className="subhead">Surround yourself with inspiration + celebrate new changes. If you're receiving this invite, you have inspired someone. Invite someone that also inspires you.</p>
+            <p className="subhead">You received this invite because you inspired someone as an artist, technologist or friend. Now it's your turn to invite people who inspire you. Use your invitations wisely!</p>
             <a href="/profile" className="btn btn-primary btn-lg btn-block">Invite Friends</a>
           </div>
         )

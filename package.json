@@ -5,7 +5,7 @@
   "main": "",
   "scripts": {
     "clean": "rimraf dist/*",
-    "copy": "copyfiles -f ./src/index.html ./src/images/favicon.png ./src/jaapokkienchance-regular.woff ./dist",
+    "copy": "copyfiles -f ./src/index.html ./src/images/favicon.png ./src/jaapokkienchance-regular.woff ./src/images/logo.png ./dist",
     "dist": "npm run copy & webpack --env=dist",
     "lint": "eslint ./src",
     "posttest": "npm run lint",
