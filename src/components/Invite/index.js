@@ -97,7 +97,7 @@ class AppComponent extends Reflux.Component {
         )
       }
 
-      if (this.state.invite.from === this.props.user.uid) {
+      if (this.props.user.uid && this.state.invite.from === this.props.user.uid) {
         content = (
           <div className="full-width">
             <h2>Send this!</h2>

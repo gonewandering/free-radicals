@@ -25,8 +25,9 @@ body {
   }
 
   h1,h2,h3 {
-    font-family: $fontHeadline;
-    font-weight: 800;
+    font-family: $fontRegular;
+    font-weight: 300;
+    color: #444;
   }
 
   label, .label {

@@ -48,6 +48,7 @@ class AppComponent extends Reflux.Component {
   }
 
   render() {
+    let headline = null
     let invites = Object.values((this.state.user && this.state.user.invites) || {});
     let invitesTable = null
 
@@ -111,12 +112,22 @@ class AppComponent extends Reflux.Component {
       </table>
     )
 
+    if (!this.state.user.firstName && !this.state.loading) {
+      headline = (
+        <div>
+          <h2>Invitee Login</h2>
+          <p>If you're already registered for the next Free Radicals event, login here. You'll be able to manage your invites and see details about the event.</p>
+        </div>
+      )
+    }
+
     return (
       <div className="grid home">
         <Box background={ require('../images/bg/pexels-photo-234059.jpeg') } />
         <Box classes={ ['box-white'] }>
           <div className="full-width block-black">
-            <Login title="Invitee Login">
+            { headline }
+            <Login>
               <h2>Hi, { this.state.user.firstName }!</h2>
               <p>You've RSVPed to the next Free Radicals event. Below are your invites. You'll be able to see when they're used and by who.</p>
               { invitesTable }

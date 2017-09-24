@@ -18,7 +18,7 @@ class AppComponent extends React.Component {
     })
 
     this.props.onSubmit && this.props.onSubmit(values)
-    AuthActions.register(values).then(this.props.onRegistered && this.props.onRegistered())
+    AuthActions.register(values);
 
     return;
   }

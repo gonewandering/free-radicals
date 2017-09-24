@@ -1,5 +1,6 @@
 import Reflux from 'reflux'
 import AuthActions from '../actions/auth'
+import MessageActions from '../actions/message'
 import firebase from '../sources/firebase'
 import _ from 'underscore'
 
@@ -25,10 +26,15 @@ class AuthStore extends Reflux.Store {
   }
 
   register(options) {
+    const self = this
     this.loading.bind(this)(true)
 
     return firebase.auth().createUserWithEmailAndPassword(options.email, options.password)
       .then(this.setProfile.bind(this, options))
+      .catch(err => {
+        MessageActions.send(err.message);
+        self.loading.bind(self)(false);
+      })
   }
 
   login(options) {
