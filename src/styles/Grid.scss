@@ -82,6 +82,11 @@ $n: $rows * $columns;
       &>div {
         width: 100%;
       }
+
+      &.empty {
+        padding: 0;
+        height: 0;
+      }
     }
   }
 

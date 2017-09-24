@@ -47,6 +47,12 @@ class AppComponent extends Reflux.Component {
     this.setState(this.state);
   }
 
+  resend(sel, e) {
+    e.preventDefault();
+    this.state.user.invites[sel.id].sent = undefined;
+    this.setState(this.state);
+  }
+
   render() {
     let headline = null
     let invites = Object.values((this.state.user && this.state.user.invites) || {});
@@ -79,11 +85,14 @@ class AppComponent extends Reflux.Component {
           <tr className="invite-tr">
             <td>
               <div className="invite-name">
-                <span className="invite-number">{ i + 1 }.)</span><em> { invite.sent }</em>
+                <span className="invite-number">{ i + 1 }.)</span>
+                <a href="" onClick={ this.resend.bind(this, invite) }><em> { invite.sent }</em></a>
               </div>
             </td>
             <td className="align-right">
-              <span className="label label-blue">Sent!</span> <a href={ url } target="_blank" className="label label-green">Invite URL</a>
+              <div className="invite-url">
+                <span className="label label-blue">Sent!</span> <a href={ url } target="_blank" className="label label-green">Invite URL</a>
+              </div>
             </td>
           </tr>
         )
@@ -98,7 +107,9 @@ class AppComponent extends Reflux.Component {
             </div>
           </td>
           <td width="70px" className="align-right">
-            <a className="label" href={ url } onClick={ this.sendInvite.bind(this, sel) }>Send</a>
+            <div className="invite-url">
+              <a className="label" href={ url } onClick={ this.sendInvite.bind(this, sel) }>Send</a>
+            </div>
           </td>
         </tr>
       )
@@ -131,7 +142,7 @@ class AppComponent extends Reflux.Component {
               <h2>Hi, { this.state.user.firstName }!</h2>
               <p>You've RSVPed to the next Free Radicals event. Below are your invites. You'll be able to see when they're used and by who.</p>
               { invitesTable }
-              <a className="btn btn-sm btn-primary" href="" onClick={ this.logout }>Logout!</a>
+              <a className="btn btn-sm btn-primary" href="" onClick={ this.logout }>Sign Out!</a>
             </Login>
           </div>
         </Box>

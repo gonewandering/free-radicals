@@ -17,6 +17,10 @@ class AppComponent extends React.Component {
       styles.backgroundColor = this.props.color;
     }
 
+    if (!this.props.children) {
+      classes.push('empty');
+    }
+
     if (this.props.logo) {
       logo = (
         <img className="box-logo center" src={ this.props.logo } />
