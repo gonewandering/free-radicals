@@ -28,9 +28,9 @@ class AppComponent extends Reflux.Component {
             </div>
           </Box>
           <Box background={ require('../images/bg/pexels-photo-270859.jpeg') } />
-          <Box background={ require('../images/bg/the-interior-of-the-repair-interior-design-159045.jpeg') } />
-          <Box background={ require('../images/bg/boy-african-africa-child-47080.jpeg') } />
-          <Box background={ require('../images/bg/hibiscus-blossom-bloom-flower-64210.jpeg') } />
+          <Box background={ require('../images/bg/pexels-photo-532561.jpg') } />
+          <Box background={ require('../images/bg/pexels-photo-343717.jpg') } />
+          <Box background={ require('../images/bg/pexels-photo-umbrellas.jpg') } />
         </div>
       </div>
     )
