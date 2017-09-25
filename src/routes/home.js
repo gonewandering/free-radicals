@@ -23,7 +23,7 @@ class AppComponent extends Reflux.Component {
           <Box background={ require('../images/bg/pexels-photo-47424.jpeg') } />
           <Box color="#001122">
             <div>
-              <p>A passionate group of friends in New York, interested in improving the world around us through <strong>art</strong>, <strong>technology</strong> & <strong>design</strong>.</p>
+              <p>A passionate group of friends in New York, interested in improving the world around us through immersive <strong>art</strong>, <strong>technology</strong> & <strong>design</strong>.</p>
               <p><i className="fa fa-circle fa-2x text-blue"></i> <i className="fa fa-circle fa-2x text-turq"></i> <i className="fa fa-circle fa-2x text-yellow"></i></p>
             </div>
           </Box>

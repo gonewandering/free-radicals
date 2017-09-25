@@ -28,7 +28,11 @@ class AppComponent extends Reflux.Component {
         </Box>
         <Box classes={ ['box-white'] }>
           <div>
-            <p>Our next party will be held on October 14th, in a rustic, creative firehouse loft located in Williamsburg. Two DJs, art and a specially curated open cocktail bar help us welcome in fall in style.</p>
+            <p>Our next party will be held on October 14th, in a unique, creative loft located in Williamsburg. Two DJs, art and a specially curated open cocktail bar help us welcome in fall in style.</p>
+            <br />
+            <p className="detail-text">All proceeds from the party go to <a href="http://missamazing.org">Miss Amazing</a></p>
+            <p className="sponsor-text">Sponsored by our friends at <a href="https://www.fiveboroughs.com/"><img src={ require('../images/logos/FBBC_BRAND_STRIP_LOGO_BLACK.png') } /></a></p>
+            <h6 className="text-turq">This event is by invitation-only.</h6>
           </div>
         </Box>
         <Box background={ require('../images/bg/pexels-photo-132204.jpg') } />

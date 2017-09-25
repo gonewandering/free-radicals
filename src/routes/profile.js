@@ -140,7 +140,7 @@ class AppComponent extends Reflux.Component {
             { headline }
             <Login>
               <h2>Hi, { this.state.user.firstName }!</h2>
-              <p>You've RSVPed to In Good Company, our Fall Party on October 14th. Each person who RSVPs gets one or more invites to send to friends. Yours are below. Send them soon. This event is limited to 120 people, and we'll stop accepting RSVPs when we reach that number.</p>
+              <p>You've RSVPed to In Good Company, our Fall Party on October 14th. Each person who RSVPs gets one or more invites to send to friends. Yours are below. Send them soon. This event is limited to 100 people, and we'll stop accepting RSVPs when we reach that number.</p>
               <h4>Your Invitations</h4>
               { invitesTable }
               <small>Emails will never be used for anything but sending invites!</small>
