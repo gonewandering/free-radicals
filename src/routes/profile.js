@@ -134,23 +134,26 @@ class AppComponent extends Reflux.Component {
 
     return (
       <div className="grid home">
-        <Box background={ require('../images/bg/pexels-photo-234059.jpeg') } />
+        <Box background={ require('../images/bg/pexels-photo-556663.jpeg') } />
         <Box classes={ ['box-white'] }>
           <div className="full-width block-black">
             { headline }
             <Login>
               <h2>Hi, { this.state.user.firstName }!</h2>
-              <p>You've RSVPed to In Good Company, our Fall Party on October 18th. Each person who RSVPs gets one or more invites to send to friends. Yours are below. Send them soon. This event is limited to 120 people, and we'll stop accepting RSVPs when we reach that number.</p>
+              <p>You've RSVPed to In Good Company, our Fall Party on October 14th. Each person who RSVPs gets one or more invites to send to friends. Yours are below. Send them soon. This event is limited to 100 people, and we'll stop accepting RSVPs when we reach that number.</p>
               <h4>Your Invitations</h4>
               { invitesTable }
               <small>Emails will never be used for anything but sending invites!</small>
             </Login>
           </div>
         </Box>
+
+
         <Box background={ require('../images/bg/pexels-photo-120271.jpeg') } />
-        <Box background={ require('../images/bg/pexels-photo-247292.jpeg') }></Box>
-        <Box background={ require('../images/bg/pexels-photo-251287.jpeg') } />
         <Box background={ require('../images/bg/nuclear-weapons-test-nuclear-weapon-weapons-test-explosion-73909.jpeg') } />
+        <Box background={ require('../images/bg/pexels-photo-136419.jpeg') } />
+        <Box background={ require('../images/bg/pexels-photo-268261.jpeg') } />
+
       </div>
     )
   }

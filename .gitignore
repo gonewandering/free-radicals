@@ -2,6 +2,7 @@
 logs
 *.log
 .DS_Store
+*/**/.DS_Store
 
 # Runtime data
 pids
@@ -34,5 +35,4 @@ bower_components/
 .idea
 
 # DIST
-
 dist
