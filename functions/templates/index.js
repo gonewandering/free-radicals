@@ -28,7 +28,7 @@ function compile(path) {
 
 module.exports = {
   invite: {
-    subject: 'You\'re invited to In Good Company.',
+    subject: {{ user.firstName }} {{ user.lastName }} 'invited you to In Good Company.',
     template: compile('./templates/invite.handlebars')
   },
   rsvp: {

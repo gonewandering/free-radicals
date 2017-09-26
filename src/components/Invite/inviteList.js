@@ -12,7 +12,6 @@ import InviteActions from '../../actions/invite'
 import InviteStore from '../../stores/invite'
 
 class AppComponent extends Reflux.Component {
-
   gotoUrl(url, e) {
     e.preventDefault();
     location.href = url;

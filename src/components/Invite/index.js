@@ -67,14 +67,14 @@ class AppComponent extends Reflux.Component {
       1: (
         <div className="full-width">
           <h2>Step 1</h2>
-          <p>Register for the event.</p>
+          <p>Register for the event to RSVP.</p>
           <Register />
         </div>
       ),
       2: (
         <div className="full-width">
           <h2>Step 2</h2>
-          <p className="subhead">Your $25 donation gets you in the door and covers the bar and the DJs. You can only buy one but you'll have a chance in a moment to invite friends.</p>
+          <p className="subhead">RSVP! Your $25 donation gets you in the door and covers the bar and the DJs. You can only buy one but you'll have a chance in a moment to invite friends.</p>
           <Checkout user={ this.props.user } onPayment={ this.onPayment.bind(this) }></Checkout>
         </div>
       )
