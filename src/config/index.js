@@ -10,7 +10,7 @@ export default {
     messagingSenderId: '767523430935'
   },
   stripe: {
-    key: 'pk_test_PAOzpym0eYI03x7kmJYWTNRr'
+    key: 'pk_live_Q31NzK83LfjlOOHWy3glRFBL'
   },
   baseUrl: 'https://wearefreeradicals.org',
   apiUrl: 'https://us-central1-free-radicals-4ca3a.cloudfunctions.net'

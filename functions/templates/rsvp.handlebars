@@ -5,6 +5,20 @@
     font-weight: 300;
   }
 
+  .invoice {
+    width: 100%;
+  }
+
+  .invoice td.content {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 5px 0;
+  }
+
+  .invoice td.content.right {
+    text-align: right;
+  }
+
   .button {
     display: block;
     padding: 10px 30px;
@@ -30,6 +44,13 @@
     color: white;
     width: 400px;
   }
+
+  a {
+    background: #ffff70;
+    position: inline-block;
+    padding: 1px 4px;
+    text-decoration: none;
+  }
 </style>
 <table>
   <tbody>
@@ -44,13 +65,18 @@
         <p>Thanks for RSVP'ing for In Good Company. We're really excited that you're coming!</p>
         <p>If you haven't yet, make sure to invite anyone you'd like to have join using your <a href="https://wearefreeradicals.org/profile">invite page</a>. The event will sell out extremely quickly and we'd hate to miss your friends!</p>
         <p>We'll send an email with directions to the venue the week of the party. When you get there, just let the doorman know your name.</p>
-        <br />
         <p>Oh, and here's your donation receipt:</p>
-        <ul>
-          <li>**placeholder**</li>
-        </ul>
-        <br />
-        <p>Have questions? Send us an email (info@wearefreeradicals.org). Looking forward to seeing you on the 14th!</p>
+        <table class="invoice">
+          <tr>
+            <td><b>Item</b></td>
+            <td><b>Amount</b></td>
+          </tr>
+          <tr>
+            <td class="content">One Ticket to Free Radicals, In Good Company.<br />Donation to Miss Amazing<br /><b>{{ user.payment.id }}</b></td>
+            <td class="content right">$25.00</td>
+          </tr>
+        </table>
+        <p>Have questions? Send us an email (<a href="mailto://info@wearefreeradicals.org">info@wearefreeradicals.org</a>). Looking forward to seeing you on the 14th!</p>
         <p>--the Free Radicals</p>
       </td>
     </tr>

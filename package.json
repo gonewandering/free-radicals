@@ -6,6 +6,7 @@
   "scripts": {
     "clean": "rimraf dist/*",
     "copy": "copyfiles -f ./src/index.html ./src/images/favicon.png ./src/jaapokkienchance-regular.woff ./src/images/logo.png ./dist",
+    "deploy": "npm run dist & firebase deploy",
     "dist": "npm run copy & webpack --env=dist",
     "lint": "eslint ./src",
     "posttest": "npm run lint",

@@ -58,6 +58,7 @@ class InviteStore extends Reflux.Store {
     let promises = []
 
     options.invitee.payment = options.payment;
+    options.invitee.receipt = options.receipt;
     options.invitee.invitedBy = options.invite.from;
     options.invitee.inviteID = options.invite.id;
 
@@ -80,7 +81,8 @@ class InviteStore extends Reflux.Store {
       loading: true
     });
 
-    return this.createUserProfile(options)
+    return this.processPayment(options)
+      .then(this.createUserProfile.bind(this, options))
       .then(this.markRSVPed.bind(this, options))
       .then(this.generateInvites.bind(this, options))
       .then(this.sendRSVP.bind(this, options))
@@ -89,8 +91,19 @@ class InviteStore extends Reflux.Store {
   }
 
   sendRSVP(options) {
-    return $.get(config.apiUrl + '/send?template=rsvp&email=' + options.invitee.email + '&uid=' + options.invitee.uID)
+    return $.get(config.apiUrl + '/send?template=rsvp&email=' + options.invitee.email + '&uid=' + options.invitee.uid)
       .catch(err => { console.log(err); })
+  }
+
+  processPayment(options) {
+    return $.ajax({
+      url: config.apiUrl + '/checkout',
+      method: 'POST',
+      body: JSON.stringify(options.payment)
+    }).then(resp => {
+      options.receipt = resp;
+      return options;
+    })
   }
 
   lookup(options) {
