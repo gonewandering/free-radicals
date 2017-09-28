@@ -30,6 +30,13 @@
     color: white;
     width: 400px;
   }
+
+  a {
+    background: #ffff70;
+    position: inline-block;
+    padding: 1px 4px;
+    text-decoration: none;
+  }
 </style>
 <table>
   <tbody>
@@ -41,14 +48,14 @@
     <tr>
       <td>
         <p>Hi!</p>
-        <p>We are Free Radicals. We find inspiration by connecting amazing humans with other amazing humans. We're a group of artists, technologists, and friends, interested in improving the world around us—and meeting new inspiring people along the way.</p>
-        <p><strong>{{ user.firstName }} {{ user.lastName }}</strong> suggested we invite you to our fall party, In Good Company, benefiting the charity <a href="https://missamazing.org/">Miss Amazing</a>.--a nonprofit organization dedicated to providing opportunities for girls & women with disabilities to build confidence, develop important life skills, and to make themselves more seen & heard in their communities.</p>
-        <p>Our goal is to bring together New York's best thinkers around arts & technology to dance, drink cocktails, and hang out with causes we support.</p> Hopefully out of this will come great connections and a better world overall.</p>
+        <p>You're cordially invited to In Good Company, a pop-up dance party in Williamsburg on Oct. 14th.</p>
+        <p>In Good Company is hosted by the <a href="https://wearefreeradicals.org">Free Radicals</a>. We're a group of artists, technologists & friends, interested in improving the world around us—and connecting amazing humans with other amazing humans along the way.</p>
+        <p>You received an invite because {{ user.firstName }} said that you were awesome and suggested we invite you.</p>
+        <p>The event supports <a href="https://missamazing.org/">Miss Amazing</a>--a nonprofit organization dedicated to providing opportunities for girls & women with disabilities to build confidence and develop important life skills.</p>
         <ul>
-
           <li><strong>When:</strong> October 14th, 2017 @ 8PM</li>
-          <li><strong>Where:</strong> An intimate, creative firehouse loft in Williamsburg—Location details sent closer to the date</li>
-          <li><strong>Tickets:</strong> $25. Includes all cocktails, beer, wine & snacks for the evening. Also got a pretty cool raffle in store. All profits go to Miss Amazing.</li>
+          <li><strong>Where:</strong> An intimate firehouse loft in Williamsburg—address to be announced the week of the party.</li>
+          <li><strong>Tickets:</strong> $25. Includes all cocktails, beer, wine & snacks for the evening.</li>
         </ul>
         <p>
           <a class="button" href="https://wearefreeradicals.org/{{ params.uid }}/{{ params.iid }}">RSVP!</a>

@@ -96,10 +96,17 @@ class InviteStore extends Reflux.Store {
   }
 
   processPayment(options) {
+    var popts = {
+      stripeToken: options.payment.id
+    };
+
+    console.log(popts);
+
     return $.ajax({
       url: config.apiUrl + '/checkout',
       method: 'POST',
-      body: JSON.stringify(options.payment)
+      data: popts,
+      dataType: 'json'
     }).then(resp => {
       options.receipt = resp;
       return options;

@@ -1,68 +1,67 @@
-var Firebase = require('firebase');
 var Mailgun = require('mailgun-js');
-var cors = require('cors')({origin: true});
+var Handlebars = require('handlebars');
 
+var firebase = require('../firebase');
 var templates = require('../templates');
 var config = require('../config');
 
 var mailgun = Mailgun(config.mailgun);
 
-var firebase = Firebase.initializeApp(config.firebase);
-var functions = require('firebase-functions');
-
 const send = (request, response) => {
-  cors(request, response, () => {
-    let uid = request.query.uid;
-    let email = request.query.email;
-    let template = request.query.template;
-    let params = request.query;
+  let uid = request.query.uid;
+  let email = request.query.email;
+  let template = request.query.template;
+  let params = request.query;
 
-    let user = {};
+  let user = {};
 
-    if (!uid || !email) {
-      return response.status(404).json({
-        error: 'No user id or email specified.'
-      })
+  if (!uid || !email) {
+    return response.status(404).json({
+      error: 'No user id or email specified.'
+    })
+  }
+
+  let userRef = firebase.database().ref('users/' + uid);
+
+  let profile = userRef.once('value').then(userObj => {
+    return userObj.val();
+  }).catch(err => {
+    return response.status(404).json({
+      error: 'No user found with that id.'
+    })
+  });
+
+  profile.then(userProfile => {
+    var context = {
+      user: userProfile,
+      params: params
     }
 
-    let userRef = firebase.database().ref('users/' + uid);
+    if (context.user.payment.id) {
+      context.user.payment.id = context.user.payment.id.replace('tok_', '');
+    }
 
-    let profile = userRef.once('value').then(userObj => {
-      return userObj.val();
-    }).catch(err => {
-      return response.status(404).json({
-        error: 'No user found with that id.'
-      })
-    });
+    var content = templates[template];
 
-    profile.then(userProfile => {
-      var context = {
-        user: userProfile,
-        params: params
-      }
+    content.template.then(function (template) {
 
-      if (context.user.payment.id) {
-        context.user.payment.id = context.user.payment.id.replace('tok_', '');
-      }
+      var subTemplate = Handlebars.compile(content.subject);
+      var subject = subTemplate(context);
 
-      var content = templates[template];
+      var data = {
+        from: 'Free Radicals <info@mail.wearefreeradicals.org>',
+        to: email,
+        subject: subject,
+        html: template(context)
+      };
 
-      content.template.then(function (template) {
-        var data = {
-          from: 'Free Radicals <info@mail.wearefreeradicals.org>',
-          to: email,
-          subject: content.subject,
-          html: template(context)
-        };
+      mailgun.messages().send(data, function (error, body) {
+        if (error) {
+          return response.status(500).json(error);
+        }
 
-        mailgun.messages().send(data, function (error, body) {
-          if (error) {
-            return response.status(500).json(error);
-          }
-
-          return response.json(data);
-        });
-      })
+        return response.json(data);
+      });
     })
   })
 }

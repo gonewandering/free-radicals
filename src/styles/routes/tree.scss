@@ -1,0 +1,24 @@
+.Tree {
+  .node circle {
+	  fill: #000;
+	  stroke: lighten(yellow, 20);
+	  stroke-width: 3px;
+	}
+
+	.node text {
+    font: 12px sans-serif;
+    fill: white;
+  }
+
+  .node text.sub-label {
+    font-size: 10px;
+    font-weight: bold;
+    fill: #AAA;
+  }
+
+	.link {
+	  fill: none;
+	  stroke: #555;
+	  stroke-width: 2px;
+	}
+}

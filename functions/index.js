@@ -1,8 +1,18 @@
-const functions = require('firebase-functions');
-const admin = require('firebase-admin');
+var functions = require('firebase-functions')
+var admin = require('firebase-admin')
 
-let send = require('./routes/send');
-let checkout = require('./routes/checkout')
+var send = require('./routes/send');
+var checkout = require('./routes/checkout')
+var tree = require('./routes/tree')
 
-exports.send = functions.https.onRequest(send);
-exports.checkout = functions.https.onRequest(checkout);
+var cors = require('cors')({origin: true});
+
+const Cors = function (func) {
+  return function (req, res) {
+    return cors(req, res, func.bind(null, req, res));
+  }
+}
+
+exports.send = functions.https.onRequest(Cors(send));
+exports.checkout = functions.https.onRequest(Cors(checkout));
+exports.tree = functions.https.onRequest(Cors(tree));

@@ -14,6 +14,7 @@ import Invite from './routes/invite';
 import Profile from './routes/profile';
 import Faq from './routes/faq';
 import Next from './routes/next';
+import Tree from './routes/tree';
 
 import {
   BrowserRouter as Router,
@@ -32,6 +33,7 @@ let Routes = () => {
           <Route path="/faq" component={ Faq } />
           <Route path="/next" component={ Next } />
           <Route path="/:uID/:inviteID" component={ Invite } />
+          <Route path="/tree" component={ Tree } />
         </div>
       </Router>
     </div>

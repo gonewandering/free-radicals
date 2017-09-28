@@ -16,6 +16,7 @@
     "handlebars": "^4.0.10",
     "inline-css": "^2.2.2",
     "mailgun-js": "^0.13.1",
-    "stripe": "^5.1.0"
+    "stripe": "^5.1.0",
+    "underscore": "^1.8.3"
   }
 }

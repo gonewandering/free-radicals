@@ -63,6 +63,7 @@
   },
   "dependencies": {
     "core-js": "^2.0.0",
+    "d3": "^4.10.2",
     "firebase-admin": "^5.2.1",
     "firebase-functions": "^0.6.3",
     "jquery": "^3.2.1",

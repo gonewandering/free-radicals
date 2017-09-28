@@ -1,16 +1,15 @@
-const Stripe = require('stripe');
-const config = require('../config');
+var Stripe = require('stripe');
+var config = require('../config');
 
-const stripe = Stripe(config.stripe.secret);
+var stripe = Stripe(config.stripe.secret);
 
 function checkout (req, res) {
-  var token = req.body.stripeToken;
-
   stripe.charges.create({
-    amount: 25000,
+    amount: 2500,
     currency: "usd",
     description: "In Good Company / Free Radicals",
-    source: token,
+    source: req.body.stripeToken,
+    statement_descriptor: 'Free Radicals NYC'
   }, function(err, charge) {
     if (err) { res.status(500).json(err); }
     res.json(charge);

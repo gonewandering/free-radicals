@@ -28,11 +28,11 @@ function compile(path) {
 
 module.exports = {
   invite: {
-    subject: {{ user.firstName }} {{ user.lastName }} 'invited you to In Good Company.',
+    subject: '{{ user.firstName }} {{ user.lastName }} invited you to In Good Company, a pop-up dance party in Williamsburg.',
     template: compile('./templates/invite.handlebars')
   },
   rsvp: {
-    subject: 'Thanks for RSVPing to In Good Company',
+    subject: 'Thanks for RSVPing to In Good Company!',
     template: compile('./templates/rsvp.handlebars')
   }
 }
