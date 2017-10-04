@@ -4,6 +4,7 @@ var admin = require('firebase-admin')
 var send = require('./routes/send');
 var checkout = require('./routes/checkout')
 var tree = require('./routes/tree')
+var summary = require('./routes/summary')
 
 var cors = require('cors')({origin: true});
 
@@ -16,3 +17,4 @@ const Cors = function (func) {
 exports.send = functions.https.onRequest(Cors(send));
 exports.checkout = functions.https.onRequest(Cors(checkout));
 exports.tree = functions.https.onRequest(Cors(tree));
+exports.summary = functions.https.onRequest(Cors(summary));

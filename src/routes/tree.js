@@ -12,16 +12,15 @@ class AppComponent extends Reflux.Component {
     super(props);
 
     this.state = {
-      user: {},
-      invites: []
+      tree: {},
+      summary: {}
     }
   }
 
-  generateTree(data) {
-    console.log(d3);
+  createTree() {
+    var data = Object.values(this.state.tree);
 
-    data = Object.values(data);
-    console.log(data);
+    if (data.length == 0) { return; }
 
     // ************** Generate the tree diagram	 *****************
     var margin = {top: 20, right: 120, bottom: 20, left: 120},
@@ -36,11 +35,13 @@ class AppComponent extends Reflux.Component {
     var diagonal = d3.svg.diagonal()
     	.projection(function(d) { return [d.y, d.x]; });
 
-    var svg = d3.select(".Chart").append("svg")
-    	.attr("width", width + margin.right + margin.left)
-    	.attr("height", height + margin.top + margin.bottom)
-      .append("g")
-    	.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    d3.select('.Chart svg').remove();
+
+    var svg = d3.select('.Chart').append('svg')
+    	.attr('width', width + margin.right + margin.left)
+    	.attr('height', height + margin.top + margin.bottom)
+      .append('g')
+    	.attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
     var root = data[0];
 
@@ -66,54 +67,82 @@ class AppComponent extends Reflux.Component {
       nodes.forEach(function(d) { d.y = d.depth * 180; });
 
       // Declare the nodes…
-      var node = svg.selectAll("g.node")
+      var node = svg.selectAll('g.node')
     	  .data(nodes, function(d) { return d.id || (d.id = ++i); });
 
       // Enter the nodes.
-      var nodeEnter = node.enter().append("g")
-    	  .attr("class", "node")
-    	  .attr("transform", function(d) {
-    		  return "translate(" + d.y + "," + d.x + ")"; });
+      var nodeEnter = node.enter().append('g')
+    	  .attr('class', 'node')
+    	  .attr('transform', function(d) {
+    		  return 'translate(' + d.y + ',' + d.x + ')'; });
 
-      nodeEnter.append("circle")
-    	  .attr("r", 10);
+      nodeEnter.append('circle')
+    	  .attr('r', 10);
 
-      nodeEnter.append("text")
-    	  .attr("x", function(d) {
+      nodeEnter.append('text')
+    	  .attr('x', function(d) {
     		  return d.children || d._children ? -13 : 13; })
-    	  .attr("dy", ".35em")
-    	  .attr("text-anchor", function(d) {
-    		  return d.children || d._children ? "end" : "start"; })
+    	  .attr('dy', '.35em')
+    	  .attr('text-anchor', function(d) {
+    		  return d.children || d._children ? 'end' : 'start'; })
     	  .text(function(d) { return d.firstName + ' ' + d.lastName; });
 
-        nodeEnter.append("text")
-          .attr("class", "sub-label")
-      	  .attr("x", function(d) {
+        nodeEnter.append('text')
+          .attr('class', 'sub-label')
+      	  .attr('x', function(d) {
       		  return d.children || d._children ? -13 : 13; })
-      	  .attr("dy", "1.7em")
-      	  .attr("text-anchor", function(d) {
-      		  return d.children || d._children ? "end" : "start"; })
+      	  .attr('dy', '1.7em')
+      	  .attr('text-anchor', function(d) {
+      		  return d.children || d._children ? 'end' : 'start'; })
       	  .text(getStats);
 
       // Declare the links…
-      var link = svg.selectAll("path.link")
+      var link = svg.selectAll('path.link')
     	  .data(links, function(d) { return d.target.id; });
 
       // Enter the links.
-      link.enter().insert("path", "g")
-    	  .attr("class", "link")
-    	  .attr("d", diagonal);
+      link.enter().insert('path', 'g')
+    	  .attr('class', 'link')
+    	  .attr('d', diagonal);
     }
   }
 
   componentDidMount() {
-    $.get('https://us-central1-free-radicals-4ca3a.cloudfunctions.net/tree').then(this.generateTree);
+    const self = this;
+
+    $.get('https://us-central1-free-radicals-4ca3a.cloudfunctions.net/tree').then((data) => {
+      self.setState(data);
+    });
+  }
+
+  componentDidUpdate() {
+    this.createTree.bind(this)();
   }
 
   render() {
     return (
       <div className="Tree">
         <div className="Chart" />
+        <div className="summary">
+          <div className="row">
+            <div className="col-sm-3 col-xs-6">
+              <h1>{ this.state.summary.total || 0 }</h1>
+              <h3>Total</h3>
+            </div>
+            <div className="col-sm-3 col-xs-6">
+              <h1>{ this.state.summary.confirmed || 0 }</h1>
+              <h3>Confirmed</h3>
+            </div>
+            <div className="col-sm-3 col-xs-6">
+              <h1>{ this.state.summary.sent || 0 }</h1>
+              <h3>Sent</h3>
+            </div>
+            <div className="col-sm-3 col-xs-6">
+              <h1>{ this.state.summary.available || 0 }</h1>
+              <h3>Available</h3>
+            </div>
+          </div>
+        </div>
       </div>
     )
   }

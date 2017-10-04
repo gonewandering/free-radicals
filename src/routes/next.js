@@ -23,7 +23,7 @@ class AppComponent extends Reflux.Component {
         <Box color="#001122">
           <div className="rsvp-text full-width">
             <h1>In Good Company</h1>
-            <p className="sub-head">An event to celebrate the creative in all of us. Benefiting the awesome charity <a href="https://missamazing.org"> Miss Amazing</a>.
+            <p className="sub-head">A party to celebrate the creative in all of us. Benefiting the awesome charity <a href="https://missamazing.org"> Miss Amazing</a>.
             <br /> DJ, Cocktails, Art. Friends.</p>
             <p><i className="fa fa-circle fa-2x text-blue"></i> <i className="fa fa-circle fa-2x text-turq"></i> <i className="fa fa-circle fa-2x text-yellow"></i></p>
             <h3>Saturday, October 14th, 2017</h3>

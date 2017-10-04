@@ -3,6 +3,8 @@ import $ from 'jquery'
 
 import config from '../config'
 import InviteActions from '../actions/invite'
+import AuthActions from '../actions/auth'
+import MessageActions from '../actions/message'
 
 import firebase from '../sources/firebase'
 
@@ -25,6 +27,21 @@ class InviteStore extends Reflux.Store {
     })
   }
 
+  createInvite(user, invite) {
+    let inviteeRef = firebase.database().ref('users/' + user.uid + '/invites')
+    let id = Math.random().toString(36).substring(7);
+
+    let inviteData = {
+      from: user.uid,
+      confirmed: false,
+      count: (invite && invite.count - 1) || 3,
+      id: id
+    }
+
+    return inviteeRef.child(id).set(inviteData)
+      .then(AuthActions.getProfile.bind(null, user))
+  }
+
   generateInvites(options) {
     let invitesAvail = options.invite.count || 1;
     let invites = []
@@ -32,18 +49,8 @@ class InviteStore extends Reflux.Store {
     let inviteeRef = firebase.database().ref('users/' + options.invitee.uid + '/invites')
 
     while(invitesAvail > 0) {
-      let id = Math.random().toString(36).substring(7);
-
-      let invite = {
-        from: options.invitee.uid,
-        confirmed: false,
-        count: options.invite.count - 1,
-        id: id
-      }
-
-      invites.push(invite);
-
-      iPromises.push(inviteeRef.child(id).set(invite))
+      let invite = this.createInvite(options.invitee, options.invite)
+      iPromises.push(invite)
       invitesAvail--
     }
 
@@ -100,8 +107,6 @@ class InviteStore extends Reflux.Store {
       stripeToken: options.payment.id
     };
 
-    console.log(popts);
-
     return $.ajax({
       url: config.apiUrl + '/checkout',
       method: 'POST',
@@ -110,6 +115,9 @@ class InviteStore extends Reflux.Store {
     }).then(resp => {
       options.receipt = resp;
       return options;
+    }).catch(err => {
+      MessageActions.send('It seems there was a problem with your payment.');
+      return err;
     })
   }
 

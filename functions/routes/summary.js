@@ -1,25 +1,7 @@
 var firebase = require('../firebase');
 var _ = require('underscore');
 
-var createTree = (list) => {
-  let data = _.values(list);
-  var tree = [];
-
-  data.forEach(function(node) {
-  	var parent = list[node.invitedBy] || undefined;
-
-  	if (parent) {
-      parent.children = parent.children || []
-  		parent.children.push(node);
-  	} else if (node.payment) {
-  		tree.push(node);
-  	}
-  });
-
-  return tree;
-}
-
-var createSummary = (list) => {
+var buildSummary = function (list) {
   var users = _.values(list);
 
   return users.reduce((e,f) => {
@@ -34,13 +16,15 @@ var createSummary = (list) => {
 
     return e;
   }, {total: 0, available: 0, sent: 0, confirmed: 0})
+
 }
 
-var tree = (request, response) => {
+var summary = (request, response) => {
   let userRef = firebase.database().ref('users');
 
   let users = userRef.once('value').then(userObj => {
-    return userObj.val();
+    let users = userObj.val();
+    return buildSummary(users);
   }).catch(err => {
     return response.status(404).json({
       error: 'Get data error.'
@@ -48,13 +32,10 @@ var tree = (request, response) => {
   });
 
   return users.then(data => {
-    response.json({
-      tree: createTree(data),
-      summary: createSummary(data)
-    });
+    response.json(data);
   }).catch(err => {
     response.status(500).json(err || {err: 'Map tree error.'})
   })
 }
 
-module.exports = tree;
+module.exports = summary;

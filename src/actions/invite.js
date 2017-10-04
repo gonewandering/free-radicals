@@ -4,7 +4,8 @@ let inviteConf = [
   'rsvp',
   'generate',
   'lookup',
-  'sendInvite'
+  'sendInvite',
+  'createInvite'
 ];
 
 export default Reflux.createActions(inviteConf)

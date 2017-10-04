@@ -1,4 +1,6 @@
 .Tree {
+  background: black;
+
   .node circle {
 	  fill: #000;
 	  stroke: lighten(yellow, 20);
@@ -18,7 +20,35 @@
 
 	.link {
 	  fill: none;
-	  stroke: #555;
-	  stroke-width: 2px;
+	  stroke: #666;
+    opacity: .5;
+	  stroke-width: 4px;
 	}
+
+  .summary {
+    position: fixed;
+    bottom: 30px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    h1 {
+      font-family: helvetica;
+      color: rgba(white, 1);
+      font-size: 4em;
+    }
+
+    h2,h3,h4 {
+      color: rgba(white, .5)
+    }
+  }
+}
+
+@media (max-width: 680px) {
+  .Tree svg * {
+    display: none;
+  }
+
+  .summary {
+    position: static; 
+  }
 }

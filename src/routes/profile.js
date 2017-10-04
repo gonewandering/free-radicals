@@ -53,10 +53,16 @@ class AppComponent extends Reflux.Component {
     this.setState(this.state);
   }
 
+  addInvite(e) {
+    e.preventDefault();
+    InviteActions.createInvite(this.state.user);
+  }
+
   render() {
     let headline = null
     let invites = Object.values((this.state.user && this.state.user.invites) || {});
     let invitesTable = null
+    let addInvite = null
 
     let renderInvites = (invite, i) => {
       let url = config.baseUrl + '/' + this.state.user.uid + '/' + invite.id;
@@ -73,7 +79,7 @@ class AppComponent extends Reflux.Component {
                 <span className="invite-number">{ i + 1 }.)</span><em> { invite.confirmed.email }</em>
               </div>
             </td>
-            <td width="70px">
+            <td width="100px">
               <span className="label label-green">Confirmed!</span>
             </td>
           </tr>
@@ -109,6 +115,7 @@ class AppComponent extends Reflux.Component {
           <td width="70px" className="align-right">
             <div className="invite-url">
               <a className="label-yellow label" href={ url } onClick={ this.sendInvite.bind(this, sel) }>Send</a>
+              <a href={ url } target="_blank" className="label label-green"><i className="fa fa-angle-right"></i></a>
             </div>
           </td>
         </tr>
@@ -132,6 +139,12 @@ class AppComponent extends Reflux.Component {
       )
     }
 
+    if (this.state.user.admin === true) {
+      addInvite = (
+        <button className="btn btn-sm btn-default btn-block" onClick={ this.addInvite.bind(this) }>Add Invite</button>
+      )
+    }
+
     return (
       <div className="grid home">
         <Box background={ require('../images/bg/pexels-photo-556663.jpeg') } />
@@ -143,6 +156,7 @@ class AppComponent extends Reflux.Component {
               <p>You've RSVPed to In Good Company, our Fall Party on October 14th. Each person who RSVPs gets one or more invites to send to friends. Yours are below. Send them soon. This event is limited to 100 people, and we'll stop accepting RSVPs when we reach that number.</p>
               <h4>Your Invitations</h4>
               { invitesTable }
+              { addInvite }
               <small>Emails will never be used for anything but sending invites!</small>
             </Login>
           </div>

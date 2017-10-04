@@ -72,6 +72,7 @@
     "react-dom": "^15.0.0",
     "react-stripe-checkout": "^2.6.3",
     "reflux": "^6.4.1",
+    "request-promise": "^4.2.2",
     "underscore": "^1.8.3"
   }
 }
