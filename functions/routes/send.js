@@ -34,7 +34,8 @@ const send = (request, response) => {
   profile.then(userProfile => {
     var context = {
       user: userProfile,
-      params: params
+      params: params,
+      eventDate: (new Date("2017-10-14 00:00:00")) - Date.now()
     }
 
     if (context.user.payment.id) {
@@ -47,7 +48,7 @@ const send = (request, response) => {
 
       var subTemplate = Handlebars.compile(content.subject);
       var subject = subTemplate(context);
-
+      
       var data = {
         from: 'Free Radicals <info@mail.wearefreeradicals.org>',
         to: email,
