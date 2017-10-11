@@ -35,12 +35,12 @@ module.exports = {
     subject: 'Thanks for RSVPing to In Good Company!',
     template: compile('./templates/rsvp.handlebars')
   },
-  reminder-inviter: {
-    subject: 'Reminder: Some of your friends have yet to RSVP to In Good Company',
-    template: compile('./templates/reminder-inviter.handlebars')
+  details: {
+    subject: 'Get Excited! In Good Company’s Lineup is Pretty Dope.',
+    template: compile('./templates/event-details.handlebars')
   },
-  reminder-invitee: {
+  reminder: {
     subject: 'Reminder: {{ user.firstName }} {{ user.lastName }} was wondering if you can make it to In Good Company!',
-    template: compile('./templates/reminder-invitee.handlebars')
+    template: compile('./templates/reminder-event-details.handlebars')
   }
 }

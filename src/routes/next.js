@@ -27,7 +27,7 @@ class AppComponent extends Reflux.Component {
             <br /> DJ, Cocktails, Art. Friends.</p>
             <p><i className="fa fa-circle fa-2x text-blue"></i> <i className="fa fa-circle fa-2x text-turq"></i> <i className="fa fa-circle fa-2x text-yellow"></i></p>
             <h3>Saturday, October 14th, 2017</h3>
-            <h5><span>9PM-2AM</span> | Williamsburg</h5>
+            <h5><span>8PM-2AM</span> | Williamsburg</h5>
             <h5>$25 entry | Open bar</h5>
             <h4 className="text-yellow">Invite Only</h4>
             <p className="detail-text">All proceeds from the party go to <a href="http://missamazing.org">Miss Amazing</a>.</p>
